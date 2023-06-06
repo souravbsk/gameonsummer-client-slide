@@ -1,20 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
+import { FaBars } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 
 const Header = () => {
+
+    const [isShowNav,setShowNav] = useState(false)
   const navItems = (
     <>
       <li>
-        <NavLink className="bg-transparent text-lg font-medium text-black">Home</NavLink>
+        <NavLink className="bg-transparent text-lg font-medium md:text-black">Home</NavLink>
       </li>
       <li>
-        <NavLink className="bg-transparent text-lg font-medium text-black">Instructors</NavLink>
+        <NavLink className="bg-transparent text-lg font-medium md:text-black">Instructors</NavLink>
       </li>
       <li>
-        <NavLink className="bg-transparent text-lg font-medium text-black">Classes</NavLink>
+        <NavLink className="bg-transparent text-lg font-medium md:text-black">Classes</NavLink>
       </li>
       <li>
-        <NavLink className="bg-transparent text-lg font-medium text-black">Dashboard</NavLink>
+        <NavLink className="bg-transparent text-lg font-medium md:text-black">Dashboard</NavLink>
       </li>
       <li>
         <NavLink>
@@ -52,12 +55,18 @@ const Header = () => {
   );
 
   return (
-    <div className="navbar container bg-base-100">
-      <div className="flex-1">
+    <div className="navbar items-start md:items-center flex-col md:flex-row container bg-base-100">
+      <div className="flex-1 flex justify-between items-center w-full">
+
         <NavLink className="btn btn-ghost normal-case font-mono  text-2xl">GameOnSummer</NavLink>
+        <div className="md:hidden block">
+            <button onClick={() => setShowNav(!isShowNav)} className="text-2xl">
+                <FaBars></FaBars>
+            </button>
+        </div>
       </div>
       <div className="flex-none">
-        <ul className="menu items-center menu-horizontal px-1">{navItems}</ul>
+        <ul className={`menu md:static md:w-auto w-1/2 h-screen md:h-auto absolute z-50 top-16 backdrop-blur-2xl items-center duration-300 md:menu-horizontal px-1 ${isShowNav ? "left-0" : "-left-96"}`}>{navItems}</ul>
       </div>
     </div>
   );
