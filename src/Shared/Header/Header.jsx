@@ -20,6 +20,9 @@ const Header = () => {
         <NavLink className="bg-transparent text-lg font-medium md:text-black">Dashboard</NavLink>
       </li>
       <li>
+        <NavLink to="/register" className="bg-transparent text-lg font-medium md:text-black">Sign up</NavLink>
+      </li>
+      <li>
         <NavLink>
          
             <div className="indicator">
