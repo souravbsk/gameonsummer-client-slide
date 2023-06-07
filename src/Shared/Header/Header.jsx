@@ -8,7 +8,6 @@ const Header = () => {
   const [isShowNav, setShowNav] = useState(false);
 
   const { user,LogOut } = useAuth();
-  console.log(user);
 
   const handleLogOut = () => {
     LogOut()

@@ -1,0 +1,75 @@
+[
+    {
+      "className": "Football",
+      "classImage": "https://i.ibb.co/6sshxC6/lars-bo-nielsen-z-Xn5qin-CDKg-unsplash-1.jpg",
+      "instructorName": "John Smith",
+      "instructorEmail": "johnsmith@example.com",
+      "availableSeats": 20,
+      "price": 50,
+      "enrolled": 15
+    },
+    {
+      "className": "Cricket",
+      "classImage": "https://i.ibb.co/BwXvtXM/sagar-kulkarni-2-Pi3-Tj8o7-II-unsplash-1.jpg",
+      "instructorName": "Emily Johnson",
+      "instructorEmail": "emilyjohnson@example.com",
+      "availableSeats": 30,
+      "price": 60,
+      "enrolled": 25
+    },
+    {
+      "className": "Chess",
+      "classImage": "https://i.ibb.co/cxtMM6N/felix-mittermeier-n-Ajil1z3e-Lk-unsplash-1.jpg",
+      "instructorName": "Michael Brown",
+      "instructorEmail": "michaelbrown@example.com",
+      "availableSeats": 10,
+      "price": 75,
+      "enrolled": 8
+    },
+    {
+      "className": "Volleyball",
+      "classImage": "https://i.ibb.co/3vSxpXn/jannes-glas-0-Na-QQs-LWLk-A-unsplash-1.jpg",
+      "instructorName": "Sarah Davis",
+      "instructorEmail": "sarahdavis@example.com",
+      "availableSeats": 15,
+      "price": 55,
+      "enrolled": 12
+    },
+    {
+      "className": "Swimming",
+      "classImage": "https://i.ibb.co/mNyRg5N/brian-matangelo-BUPa-AMSOd-E-unsplash-1.jpg",
+      "instructorName": "Robert Johnson",
+      "instructorEmail": "robertjohnson@example.com",
+      "availableSeats": 0,
+      "price": 65,
+      "enrolled": 18
+    },
+    {
+      "className": "Esports",
+      "classImage": "https://i.ibb.co/yF19GgK/josh-berendes-t6e0nt-PJ1-RE-unsplash-1.jpg",
+      "instructorName": "Maria Garcia",
+      "instructorEmail": "mariagarcia@example.com",
+      "availableSeats": 25,
+      "price": 70,
+      "enrolled": 20
+    },
+    {
+      "className": "Badminton",
+      "classImage": "https://i.ibb.co/xMMfnCm/jackie-hutchinson-lavv-Og0i90o-unsplash-1.jpg",
+      "instructorName": "David Wilson",
+      "instructorEmail": "davidwilson@example.com",
+      "availableSeats": 20,
+      "price": 55,
+      "enrolled": 17
+    },
+    {
+      "className": "Tennis",
+      "classImage": "https://i.ibb.co/vkyQpds/j-schiemann-Z4-Sxy1-3wd-Y-unsplash-1.jpg",
+      "instructorName": "Jennifer Lee",
+      "instructorEmail": "jenniferlee@example.com",
+      "availableSeats": 0,
+      "price": 60,
+      "enrolled": 11
+    }
+  ]
+  
