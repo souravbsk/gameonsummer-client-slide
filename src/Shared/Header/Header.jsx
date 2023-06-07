@@ -3,27 +3,29 @@ import { FaBars } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
+import useCart from "../../Hooks/useCart";
+import { SiGamejolt } from "react-icons/si";
 
 const Header = () => {
   const [isShowNav, setShowNav] = useState(false);
-
-  const { user,LogOut } = useAuth();
+  const { user, LogOut } = useAuth();
+  const [carts] = useCart();
 
   const handleLogOut = () => {
     LogOut()
-    .then(() => {
-      Swal.fire({
-        position: 'center',
-        icon: 'success',
-        title: 'Log Out Success',
-        showConfirmButton: false,
-        timer: 1500
+      .then(() => {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Log Out Success",
+          showConfirmButton: false,
+          timer: 1500,
+        });
       })
-    })
-    .catch((err) => {
-      console.log(err.message);
-    })
-  }
+      .catch((err) => {
+        console.log(err.message);
+      });
+  };
 
   const navItems = (
     <>
@@ -38,14 +40,20 @@ const Header = () => {
         </NavLink>
       </li>
       <li>
-        <NavLink className="bg-transparent text-lg font-medium md:text-black">
+        <NavLink
+          to="/classes"
+          className="bg-transparent text-lg font-medium md:text-black"
+        >
           Classes
         </NavLink>
       </li>
       {user ? (
         <>
           <li>
-            <NavLink className="bg-transparent text-lg font-medium md:text-black">
+            <NavLink
+              to="/dashboard/myclass"
+              className="bg-transparent text-lg font-medium md:text-black"
+            >
               Dashboard
             </NavLink>
           </li>
@@ -67,7 +75,9 @@ const Header = () => {
                     d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                   />
                 </svg>
-                <span className="badge badge-sm indicator-item">8</span>
+                <span className="badge font-semibold text-lg badge-md indicator-item">
+                  {carts.length || 0}
+                </span>
               </div>
             </NavLink>
           </li>
@@ -81,7 +91,9 @@ const Header = () => {
             </div>
           </li>
           <li>
-            <button onClick={handleLogOut} className="btn">signOut</button>
+            <button onClick={handleLogOut} className="btn">
+              signOut
+            </button>
           </li>
         </>
       ) : (
@@ -94,7 +106,6 @@ const Header = () => {
               Sign In
             </NavLink>
           </li>
-          
         </>
       )}
     </>
@@ -104,6 +115,7 @@ const Header = () => {
     <div className="navbar items-start md:items-center flex-col md:flex-row container bg-base-100">
       <div className="flex-1 flex justify-between items-center w-full">
         <NavLink className="btn btn-ghost normal-case font-mono  text-2xl">
+          <SiGamejolt className="text-5xl"></SiGamejolt>
           GameOnSummer
         </NavLink>
         <div className="md:hidden block">

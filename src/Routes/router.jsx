@@ -3,26 +3,49 @@ import Main from "../Layouts/Main";
 import Home from "../Pages/Home/Home/Home";
 import SignUp from "../Pages/SignUp/SignUp";
 import Login from "../Pages/Login/Login";
+import Classes from "../Pages/Classes/Classes";
+import DashBoard from "../Layouts/DashBoard";
+import PrivateRoute from "./PrivateRoute";
+import MyClasses from "../DashBoard/Students/MyClasses";
 
 const router = createBrowserRouter([
-    {
-        path:"/",
-        element:<Main></Main>,
-        children:[
-            {
-                path:"/",
-                element:<Home></Home>
-            },
-            {
-                path:"/register",
-                element:<SignUp></SignUp>
-            },
-            {
-                path:"/login",
-                element:<Login></Login>
-            }
-        ]
-    }
-])
+  {
+    path: "/",
+    element: <Main></Main>,
+    children: [
+      {
+        path: "/",
+        element: <Home></Home>,
+      },
+      {
+        path: "/classes",
+        element: <Classes></Classes>,
+        loader:() => fetch("http://localhost:5000/classes")
+
+      },
+      {
+        path: "/register",
+        element: <SignUp></SignUp>,
+      },
+      {
+        path: "/login",
+        element: <Login></Login>,
+      },
+    ],
+  },
+  {
+    path:"/dashboard",
+    element:<PrivateRoute><DashBoard></DashBoard></PrivateRoute>,
+    children:[
+      {
+        path:"/dashboard/myclass",
+        element:<MyClasses></MyClasses>
+      },
+      {
+        path:""
+      }
+    ]
+  }
+]);
 
 export default router;
