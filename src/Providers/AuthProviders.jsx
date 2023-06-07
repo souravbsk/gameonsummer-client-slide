@@ -63,6 +63,8 @@ const AuthProviders = ({ children }) => {
           });
       } else {
         localStorage.removeItem("gameonsummer-token");
+        setLoading(false);
+
       }
 
     //   setLoading(false);

@@ -61,11 +61,11 @@ const SignUp = () => {
 
   return (
     <div>
-      <div className="hero w-full min-h-screen bg-base-200">
-        <div className="hero-content  container flex-col lg:flex-row">
+      <div className=" w-full py-12 min-h-screen bg-base-200">
+        <div className=" flex flex-col md:flex-row  items-center justify-between container">
           <div className="text-center flex-1 lg:text-left">
             <Lottie
-              className=" mx-auto md:w-10/12"
+              className="max-w-full mx-auto md:w-10/12"
               animationData={signupAnime}
               loop={true}
             />

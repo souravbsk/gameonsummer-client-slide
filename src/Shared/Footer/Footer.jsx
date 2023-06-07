@@ -10,7 +10,7 @@ import { SiGamejolt } from "react-icons/si";
 import { MdImportContacts } from "react-icons/md";
 const Footer = () => {
   return (
-    <div className="bg-[#065C97] mt-32">
+    <div className="bg-[#065C97]">
       <div className="p-10 container">
         <div className="grid grid-cols-1 md:grid-cols-3 mb-10 gap-8">
           <div>

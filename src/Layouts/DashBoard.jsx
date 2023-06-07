@@ -32,7 +32,7 @@ const DashBoard = () => {
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content  overflow-scroll ">
+      <div className="drawer-content  overflow-auto ">
     <label
           htmlFor="my-drawer-2"
           className="btn btn-primary drawer-button lg:hidden"
@@ -48,7 +48,7 @@ const DashBoard = () => {
         <ul className="menu p-4 space-y-2 w-80 h-full bg-base-200 text-base-content">
           {/* Sidebar content here */}
           <li>
-            <NavLink className=" bg-none hover:text-slate-950  btn-ghost normal-case font-mono  text-2xl">
+            <NavLink to="/" className=" bg-none hover:text-slate-950  btn-ghost normal-case font-mono  text-2xl">
               <SiGamejolt className="text-3xl"></SiGamejolt>
               GameOnSummer
             </NavLink>
