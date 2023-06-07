@@ -3,25 +3,44 @@ import Lottie from "lottie-react";
 
 import signupAnime from "../../assets/Login/signup.json";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import useAuth from "../../Hooks/useAuth";
+import SocialLogin from "../../Components/SocialLogin/SocialLogin";
+import Swal from "sweetalert2";
 
 const Login = () => {
-  const [confirmError, setConfirmError] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const [showPass, setShowPass] = useState(true);
+  const {loginUser} = useAuth();
+  const navigate =  useNavigate();
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-    setConfirmError("");
+    setErrorMessage("");
+    const {email,password} = data;
+    loginUser(email,password)
+    .then(result => {
+      const user = result.user;
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'you are successfully login',
+        showConfirmButton: false,
+        timer: 1500
+      })
+      reset()
+      navigate("/")
+    })
+    .catch(err => {
+      setErrorMessage(err.message)
+    })
 
-    if (data?.confirmpassword !== data?.password) {
-      setConfirmError("confirm password does not matched");
-      return;
-    }
-    console.log(data);
+
   };
 
   return (
@@ -98,6 +117,8 @@ const Login = () => {
                   Sign Up
                 </Link>{" "}
               </p>
+              <p className="text-center text-red-600">{errorMessage}</p>
+              <SocialLogin></SocialLogin>
             </div>
           </div>
         </div>

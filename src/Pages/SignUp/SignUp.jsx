@@ -3,22 +3,59 @@ import Lottie from "lottie-react";
 
 import signupAnime from "../../assets/Login/signup.json";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth";
+import axios from "axios";
+import Swal from "sweetalert2";
+import SocialLogin from "../../Components/SocialLogin/SocialLogin";
 
 const SignUp = () => {
-    const [confirmError,setConfirmError] = useState("")
+  const [confirmError, setConfirmError] = useState("");
+  const { createNewUser, updateUserProfile } = useAuth();
+  const [errorMessage, setErrorMessage] = useState("");
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-    setConfirmError("")
-
-    if(data?.confirmpassword !== data?.password){
-        setConfirmError("confirm password does not matched")
-        return
+    setErrorMessage("");
+    setConfirmError("");
+    if (data?.confirmpassword !== data?.password) {
+      setConfirmError("confirm password does not matched");
+      return;
     }
+
+    const { email, fullName, address, password, gender, photoURL, phone } =
+      data;
+    createNewUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        updateUserProfile(result.user, fullName, photoURL);
+        const newUser = { email, address, gender, phone };
+
+        axios.post("http://localhost:5000/users", newUser).then((res) => {
+          console.log(res);
+          if (res?.data?.insertedId) {
+            reset();
+            navigate("/");
+            Swal.fire({
+              position: "center",
+              icon: "success",
+              title: "Register Success",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          }
+        });
+      })
+      .catch((err) => {
+        setErrorMessage(err.message);
+      });
+
     console.log(data);
   };
 
@@ -158,7 +195,10 @@ const SignUp = () => {
                     <label className="label">
                       <span className="label-text">Gender: </span>
                     </label>
-                    <select className="select select-bordered max-w-xs w-full" {...register("gender")}>
+                    <select
+                      className="select select-bordered max-w-xs w-full"
+                      {...register("gender")}
+                    >
                       <option value="female">female</option>
                       <option value="male">male</option>
                       <option value="other">other</option>
@@ -166,11 +206,21 @@ const SignUp = () => {
                   </div>
                 </div>
                 <div className="form-control mt-6">
-                 
-                  <input className="btn hover:text-slate-800 text-white bg-[#065C97]" value="Sign Up" type="submit" />
+                  <input
+                    className="btn hover:text-slate-800 text-white bg-[#065C97]"
+                    value="Sign Up"
+                    type="submit"
+                  />
                 </div>
               </form>
-              <p className="text-center mt-5">Already have an account ? <Link to="/login" className="font-medium text-[#065C97]">Sign In</Link> </p>
+              <p className="text-center mt-5">
+                Already have an account ?{" "}
+                <Link to="/login" className="font-medium text-[#065C97]">
+                  Sign In
+                </Link>{" "}
+              </p>
+              <p className="text-center text-red-600">{errorMessage}</p>
+              <SocialLogin></SocialLogin>
             </div>
           </div>
         </div>
