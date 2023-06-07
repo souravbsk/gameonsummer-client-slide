@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import ClassCard from "../../../Components/SocialLogin/ClassCard/ClassCard";
+import ClassCard from "../../../Components/ClassCard/ClassCard";
 import { Link } from "react-router-dom";
 
 const PopularClasses = () => {

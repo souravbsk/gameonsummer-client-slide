@@ -59,7 +59,7 @@ const Header = () => {
           </li>
 
           <li>
-            <NavLink>
+          <NavLink>
               <div className="indicator">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

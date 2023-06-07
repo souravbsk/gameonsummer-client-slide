@@ -7,6 +7,7 @@ import Classes from "../Pages/Classes/Classes";
 import DashBoard from "../Layouts/DashBoard";
 import PrivateRoute from "./PrivateRoute";
 import MyClasses from "../DashBoard/Students/MyClasses";
+import Payments from "../DashBoard/Students/Payments/Payments";
 
 const router = createBrowserRouter([
   {
@@ -42,7 +43,8 @@ const router = createBrowserRouter([
         element:<MyClasses></MyClasses>
       },
       {
-        path:""
+        path:"/dashboard/payment",
+        element:<Payments></Payments>
       }
     ]
   }

@@ -1,9 +1,9 @@
 import React from "react";
-import useAuth from "../../../Hooks/useAuth";
+import useAuth from "../../Hooks/useAuth";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
-import useCart from "../../../Hooks/useCart";
+import useCart from "../../Hooks/useCart";
 
 const ClassCard = ({ classItem }) => {
   const {user} = useAuth();

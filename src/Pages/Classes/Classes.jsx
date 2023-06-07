@@ -1,6 +1,6 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
-import ClassCard from "../../Components/SocialLogin/ClassCard/ClassCard";
+import ClassCard from "../../Components/ClassCard/ClassCard";
 
 const Classes = () => {
   const allClasses = useLoaderData();

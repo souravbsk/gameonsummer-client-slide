@@ -8,7 +8,7 @@ const axiosSecure = axios.create({
 });
 
 const useAxiosSecure = () => {
-  const { logOut } = useAuth(); 
+  const { LogOut } = useAuth(); 
   const navigate = useNavigate(); 
 
   useEffect(() => {
@@ -24,13 +24,13 @@ const useAxiosSecure = () => {
       (response) => response,
       async (error) => {
         if (error.response && (error.response.status === 401 || error.response.status === 403)) {
-          await logOut();
+          await LogOut();
           navigate('/login');
         }
         return Promise.reject(error);
       }
     );
-  }, [logOut, navigate]);
+  }, [LogOut, navigate]);
 
   return [axiosSecure];
 };
