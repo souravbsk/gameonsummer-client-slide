@@ -3,8 +3,9 @@ import React, { useEffect, useState } from "react";
 import "./CheckoutForm.css";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import useAuth from "../../../Hooks/useAuth";
+import Swal from "sweetalert2";
 
-const CheckoutForm = ({ price, cart }) => {
+const CheckoutForm = ({ price, cart,refetch }) => {
   const stripe = useStripe();
   const element = useElements();
   const { user } = useAuth();
@@ -13,6 +14,7 @@ const CheckoutForm = ({ price, cart }) => {
   const [axiosSecure] = useAxiosSecure();
   const [clientSecret, setClientSecret] = useState("");
   const [transactionId, setTransactionId] = useState("");
+  console.log(cart);
   useEffect(() => {
     if (price > 0) {
       axiosSecure.post("/create-payment-intent", { price }).then((res) => {
@@ -70,15 +72,24 @@ const CheckoutForm = ({ price, cart }) => {
         price,
         quantity: cart?.length,
         cartItem: cart.map((item) => item._id),
+        classItemId: cart.map(item => item.classId),
       };
 
       axiosSecure.post("/payments",payment)
       .then(res => {
-        console.log(res);
+        if(res?.data?.result.insertedId){
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Payment Success',
+                showConfirmButton: false,
+                timer: 1500
+              })
+
+              refetch()
+              
+        }
       })
-
-
-
 
     }
 

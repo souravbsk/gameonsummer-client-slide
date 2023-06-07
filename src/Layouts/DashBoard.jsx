@@ -86,7 +86,7 @@ const DashBoard = () => {
           </li>
           
           <li>
-            <NavLink className="bg-transparent text-slate-950 text-lg font-semibold">
+            <NavLink to="/dashboard/enrollClasses" className="bg-transparent text-slate-950 text-lg font-semibold">
               <FaThList></FaThList> Enrolled Classes
             </NavLink>
           </li>

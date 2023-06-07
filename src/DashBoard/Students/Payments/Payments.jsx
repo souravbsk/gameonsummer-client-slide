@@ -18,7 +18,7 @@ const Payments = () => {
 
             <div>
                 <Elements stripe={stripePromise}>
-                    <CheckoutForm cart={carts} price={price}></CheckoutForm>
+                    <CheckoutForm refetch={refetch} cart={carts} price={price}></CheckoutForm>
                 </Elements>
             </div>
         </div>

@@ -8,6 +8,7 @@ import DashBoard from "../Layouts/DashBoard";
 import PrivateRoute from "./PrivateRoute";
 import MyClasses from "../DashBoard/Students/MyClasses";
 import Payments from "../DashBoard/Students/Payments/Payments";
+import EnrollClasses from "../DashBoard/Students/EnrollClasses/EnrollClasses";
 
 const router = createBrowserRouter([
   {
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
       {
         path:"/dashboard/payment",
         element:<Payments></Payments>
+      },
+      {
+        path:"/dashboard/enrollClasses",
+        element:<EnrollClasses></EnrollClasses>
       }
     ]
   }
