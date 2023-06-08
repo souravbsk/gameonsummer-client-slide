@@ -89,10 +89,10 @@ const DashBoard = () => {
 
           <li>
             <NavLink
-              to="/dashboard/myclasses"
+              to="/dashboard/myClassList"
               className="bg-transparent  md:text-lg "
             >
-              <FaList></FaList> My Classes
+              <FaList></FaList> My Class List
             </NavLink>
           </li>
           <li>

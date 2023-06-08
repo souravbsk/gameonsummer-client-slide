@@ -21,18 +21,19 @@ const ManageClasses = () => {
   });
 
   console.log(classesData);
-  const handleChangeStatus = (id) => {
-    console.log(id);
+  const handleChangeStatus = (value) => {
+
+
 
     axiosSecure
-      .patch(`/manageClasses/${id}`, { status: "published" })
+      .patch(`/manageClasses/${value?.id}`, { status: value?.statusValue})
       .then((res) => {
         if (res?.data?.modifiedCount > 0) {
           refetch();
           Swal.fire({
             position: "center",
             icon: "success",
-            title: "Class Published Done",
+            title: `Class ${value?.statusValue} Done`,
             showConfirmButton: false,
             timer: 1500,
           });
@@ -57,7 +58,7 @@ const ManageClasses = () => {
             Swal.fire({
               position: "center",
               icon: "success",
-              title: "Class Published Done",
+              title: "Class Deleted Done",
               showConfirmButton: false,
               timer: 1500,
             });
@@ -66,6 +67,7 @@ const ManageClasses = () => {
       }
     });
   };
+
 
   return (
     <div className="w-full p-3 md:p-12">
@@ -113,18 +115,11 @@ const ManageClasses = () => {
                     </span>
                   </td>
                   <td>
-                    {classItem?.status === "published" ? (
-                      <div className="badge font-semibold badge-accent">
-                        Published
-                      </div>
-                    ) : (
-                      <button
-                        className="badge btn-sm bg-red-400"
-                        onClick={() => handleChangeStatus(classItem?._id)}
-                      >
-                        {classItem?.status}
-                      </button>
-                    )}
+                    <select onChange={(e) => handleChangeStatus({statusValue: e.target.value, id:classItem._id })} defaultValue={classItem?.status} className={`select  select-bordered select-sm  max-w ${classItem?.status === "pending" ? "bg-warning" : classItem?.status === "approved" ? "bg-green-400" : "bg-red-400"}`}>
+                      <option value="approved">Approved</option>
+                      <option value="denied">Denied</option>
+                      <option value="pending">Pending</option>
+                    </select>
                   </td>
                   <th>
                     <button

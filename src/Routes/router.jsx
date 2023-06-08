@@ -14,6 +14,7 @@ import AdminRoute from "./AdminRoute";
 import AddAClass from "../DashBoard/Instructor/AddAClass/AddAClass";
 import InstructorRoute from "./InstructorRoute";
 import ManageClasses from "../DashBoard/Admins/ManageClasses/ManageClasses";
+import MyClassesList from "../DashBoard/Instructor/MyClassesList/MyClassesList";
 
 const router = createBrowserRouter([
   {
@@ -69,6 +70,9 @@ const router = createBrowserRouter([
       {
         path:"/dashboard/addaclass",
         element:<InstructorRoute><AddAClass></AddAClass></InstructorRoute>
+      },{
+        path:"/dashboard/myClassList",
+        element:<MyClassesList></MyClassesList>
       }
     ]
   }
