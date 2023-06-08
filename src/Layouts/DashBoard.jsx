@@ -1,9 +1,10 @@
 import React from "react";
-import { FaBars, FaCartPlus, FaThList, FaUser, FaUsers, FaVideo } from "react-icons/fa";
+import { FaBars, FaCartPlus, FaList, FaThList, FaUser, FaUsers, FaVideo } from "react-icons/fa";
 import { SiGamejolt } from "react-icons/si";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { FiLogOut } from "react-icons/fi";
 import useAuth from "../Hooks/useAuth";
+import {MdFormatListBulletedAdd} from "react-icons/md"
 import Swal from "sweetalert2";
 import useCart from "../Hooks/useCart";
 import useAdmin from "../Hooks/useAdmin";
@@ -13,7 +14,7 @@ const DashBoard = () => {
 
   const [isAdmin] = useAdmin();
   console.log(isAdmin);
-  const isInstructor = useInstructor();
+  const [isInstructor] = useInstructor();
   console.log(isInstructor);
 
   return (
@@ -74,7 +75,38 @@ const DashBoard = () => {
           </li>
             </>
             :
+            /* instructor page ____________________________ route linke  */
+            isInstructor ? 
             <>
+            <li>
+            <NavLink
+              to="/dashboard/addaclass"
+              className="bg-transparent  md:md:text-lg "
+            >
+             <MdFormatListBulletedAdd></MdFormatListBulletedAdd> Add a Class
+            </NavLink>
+          </li>
+
+          <li>
+            <NavLink
+              to="/dashboard/myclasses"
+              className="bg-transparent  md:text-lg "
+            >
+              <FaList></FaList> My Classes
+            </NavLink>
+          </li>
+          <li>
+            <NavLink className="bg-transparent  md:text-lg ">
+              <FaUser></FaUser> Instructor Profile
+            </NavLink>
+          </li>
+            </>
+
+
+            :
+            
+            <>
+           {/*_________________Students route link__________________  */}
             <li>
             <NavLink
               to="/dashboard/myclass"
@@ -119,7 +151,7 @@ const DashBoard = () => {
             </>
           }
           
-          {/* Students route link_____________________________________  */}
+   
 
           {/* _____________________________ Global item _____________________________ */}
           <div className="divider"></div>

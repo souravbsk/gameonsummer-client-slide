@@ -97,7 +97,7 @@ const Login = () => {
                   />
 
                   
-                    <button type="button" onClick={() => setShowPass(!showPass)} className="absolute -translate-y-1/2 top-1/2 right-0 px-3 text-lg">
+                    <button type="button" onClick={() => setShowPass(!showPass)} className="absolute  m-0 bg-transparent shadow-none  -translate-y-1/2 top-1/2 text-slate-800 right-0 px-3 text-lg">
                     {showPass ? <FaEyeSlash></FaEyeSlash> : <FaEye></FaEye>}
                   </button>
                   </div>
