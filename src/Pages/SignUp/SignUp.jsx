@@ -13,7 +13,10 @@ const SignUp = () => {
   const [confirmError, setConfirmError] = useState("");
   const { createNewUser, updateUserProfile } = useAuth();
   const [errorMessage, setErrorMessage] = useState("");
-  const navigate = useNavigate();
+  const navigate =  useNavigate();
+  const location  = useLocation();
+  console.log(location);
+  const from = location?.state?.from?.pathname || "/";
 
   const {
     register,
@@ -35,13 +38,13 @@ const SignUp = () => {
       .then((result) => {
         const user = result.user;
         updateUserProfile(result.user, fullName, photoURL);
-        const newUser = { email, address, gender, phone };
+        const newUser = {name:fullName, email, address, gender, phone };
 
         axios.post("http://localhost:5000/users", newUser).then((res) => {
           console.log(res);
           if (res?.data?.insertedId) {
             reset();
-            navigate("/");
+            navigate(from,{replace:true});
             Swal.fire({
               position: "center",
               icon: "success",
@@ -199,8 +202,8 @@ const SignUp = () => {
                       className="select select-bordered max-w-xs w-full"
                       {...register("gender")}
                     >
-                      <option value="female">female</option>
                       <option value="male">male</option>
+                      <option value="female">female</option>
                       <option value="other">other</option>
                     </select>
                   </div>
@@ -220,7 +223,7 @@ const SignUp = () => {
                 </Link>{" "}
               </p>
               <p className="text-center text-red-600">{errorMessage}</p>
-              <SocialLogin></SocialLogin>
+              <SocialLogin from={from}></SocialLogin>
             </div>
           </div>
         </div>

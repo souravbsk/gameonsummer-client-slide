@@ -6,11 +6,13 @@ import { FiLogOut } from "react-icons/fi";
 import useAuth from "../Hooks/useAuth";
 import Swal from "sweetalert2";
 import useCart from "../Hooks/useCart";
+import useAdmin from "../Hooks/useAdmin";
 const DashBoard = () => {
   const { LogOut } = useAuth();
   const navigate = useNavigate();
   const [carts, refetch] = useCart();
 
+  
   //logout
   const handleLogOut = () => {
     LogOut()
@@ -27,10 +29,12 @@ const DashBoard = () => {
       .catch((err) => {
         console.log(err.message);
       });
-  };
+    };
+    
+    
 
-
-  const isAdmin = true
+  const [isAdmin] = useAdmin();
+  console.log(isAdmin);
 
 
   return (
@@ -69,7 +73,7 @@ const DashBoard = () => {
             <>
             <li>
             <NavLink
-              to="/dashboard/manageclasses"
+              to="/"
               className="bg-transparent text-slate-950 md:md:text-lg font-semibold"
             >
              <FaVideo></FaVideo> ManageClasses
@@ -78,7 +82,7 @@ const DashBoard = () => {
 
           <li>
             <NavLink
-              to="/dashboard/manageUsers"
+              to="/dashboard/manageusers"
               className="bg-transparent text-slate-950 md:text-lg font-semibold"
             >
               <FaUsers></FaUsers> Manage Users
@@ -91,9 +95,6 @@ const DashBoard = () => {
           </li>
             </>
             :
-            
-
-
             <>
             <li>
             <NavLink

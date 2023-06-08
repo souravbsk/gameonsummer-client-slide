@@ -9,6 +9,8 @@ import PrivateRoute from "./PrivateRoute";
 import MyClasses from "../DashBoard/Students/MyClasses";
 import Payments from "../DashBoard/Students/Payments/Payments";
 import EnrollClasses from "../DashBoard/Students/EnrollClasses/EnrollClasses";
+import ManageUsers from "../DashBoard/Admins/ManageUsers/ManageUsers";
+import AdminRoute from "./AdminRoute";
 
 const router = createBrowserRouter([
   {
@@ -37,11 +39,11 @@ const router = createBrowserRouter([
   },
   {
     path:"/dashboard",
-    element:<PrivateRoute><DashBoard></DashBoard></PrivateRoute>,
+    element:<DashBoard></DashBoard>,
     children:[
       {
         path:"/dashboard/myclass",
-        element:<MyClasses></MyClasses>
+        element:<PrivateRoute><MyClasses></MyClasses></PrivateRoute>
       },
       {
         path:"/dashboard/payment",
@@ -50,6 +52,11 @@ const router = createBrowserRouter([
       {
         path:"/dashboard/enrollClasses",
         element:<EnrollClasses></EnrollClasses>
+      },
+      // ________ admin route___________
+      {
+        path:"/dashboard/manageusers",
+        element:<AdminRoute><ManageUsers></ManageUsers></AdminRoute>
       }
     ]
   }

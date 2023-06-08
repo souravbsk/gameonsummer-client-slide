@@ -3,7 +3,7 @@ import Lottie from "lottie-react";
 
 import signupAnime from "../../assets/Login/signup.json";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import useAuth from "../../Hooks/useAuth";
 import SocialLogin from "../../Components/SocialLogin/SocialLogin";
@@ -14,6 +14,10 @@ const Login = () => {
   const [showPass, setShowPass] = useState(true);
   const {loginUser} = useAuth();
   const navigate =  useNavigate();
+  const location  = useLocation();
+  console.log(location);
+  const from = location?.state?.from?.pathname || "/";
+  console.log(from);
   const {
     register,
     handleSubmit,
@@ -34,7 +38,7 @@ const Login = () => {
         timer: 1500
       })
       reset()
-      navigate("/")
+      navigate(from,{replace:true})
     })
     .catch(err => {
       setErrorMessage(err.message)
@@ -118,7 +122,7 @@ const Login = () => {
                 </Link>{" "}
               </p>
               <p className="text-center text-red-600">{errorMessage}</p>
-              <SocialLogin></SocialLogin>
+              <SocialLogin from={from}></SocialLogin>
             </div>
           </div>
         </div>

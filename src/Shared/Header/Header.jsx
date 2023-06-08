@@ -51,7 +51,7 @@ const Header = () => {
         <>
           <li>
             <NavLink
-              to="/dashboard/myclass"
+              to="/dashboard"
               className="bg-transparent text-lg font-medium md:text-black"
             >
               Dashboard

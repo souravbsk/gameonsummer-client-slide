@@ -4,7 +4,7 @@ import useAuth from '../../Hooks/useAuth';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-const SocialLogin = () => {
+const SocialLogin = ({from}) => {
     const {signInWithGoogle} = useAuth();
     const [error,setError] = useState();
     const navigate = useNavigate();
@@ -14,9 +14,9 @@ const SocialLogin = () => {
         .then(result => {
             const user = result.user;
             console.log(user);
-            axios.post("http://localhost:5000/users",{email:user?.email})
+            axios.post("http://localhost:5000/users",{email:user?.email,name: user?.displayName})
             .then(res => {
-                navigate("/")
+                navigate(from,{replace:true})
             })
         })
         .catch(err => {

@@ -73,6 +73,10 @@ const AuthProviders = ({ children }) => {
       subScribe();
     };
   });
+  console.log(loading);
+
+  
+
 
   //singOut
   const LogOut = () => {
