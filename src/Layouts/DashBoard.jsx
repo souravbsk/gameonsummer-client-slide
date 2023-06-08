@@ -7,35 +7,14 @@ import useAuth from "../Hooks/useAuth";
 import Swal from "sweetalert2";
 import useCart from "../Hooks/useCart";
 import useAdmin from "../Hooks/useAdmin";
+import useInstructor from "../Hooks/useInstructor";
 const DashBoard = () => {
-  const { LogOut } = useAuth();
-  const navigate = useNavigate();
   const [carts, refetch] = useCart();
-
-  
-  //logout
-  const handleLogOut = () => {
-    LogOut()
-      .then((res) => {
-        Swal.fire({
-          position: "center",
-          icon: "success",
-          title: "Your work has been saved",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-        navigate("/login");
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
-    };
-    
-    
 
   const [isAdmin] = useAdmin();
   console.log(isAdmin);
-
+  const isInstructor = useInstructor();
+  console.log(isInstructor);
 
   return (
     <div className="drawer lg:drawer-open">
@@ -43,7 +22,7 @@ const DashBoard = () => {
       <div className="drawer-content  overflow-auto ">
         <label
           htmlFor="my-drawer-2"
-          className="btn text-white bg-slate-900 m-5 drawer-button lg:hidden"
+          className="btn text-white bg-[#6772e5] m-5 drawer-button lg:hidden"
         >
           <p className="">
             {" "}
@@ -55,12 +34,12 @@ const DashBoard = () => {
       </div>
       <div className="drawer-side">
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-        <ul className="menu p-4 space-y-2 max-w-full w-3/4 md:w-80 h-full bg-base-200 text-base-content">
+        <ul className="menu bg-[#6772e5] p-4 space-y-2 max-w-full w-3/4 md:w-80 h-full  text-white">
           {/* Sidebar content here */}
           <li>
             <NavLink
               to="/"
-              className=" bg-none hover:text-slate-950  btn-ghost normal-case font-mono  text-lg md:text-2xl"
+              className=" bg-none  btn-ghost normal-case font-mono  text-lg md:text-2xl"
             >
               <SiGamejolt className="md:text-3xl"></SiGamejolt>
               GameOnSummer
@@ -74,7 +53,7 @@ const DashBoard = () => {
             <li>
             <NavLink
               to="/"
-              className="bg-transparent text-slate-950 md:md:text-lg font-semibold"
+              className="bg-transparent  md:md:text-lg "
             >
              <FaVideo></FaVideo> ManageClasses
             </NavLink>
@@ -83,13 +62,13 @@ const DashBoard = () => {
           <li>
             <NavLink
               to="/dashboard/manageusers"
-              className="bg-transparent text-slate-950 md:text-lg font-semibold"
+              className="bg-transparent  md:text-lg "
             >
               <FaUsers></FaUsers> Manage Users
             </NavLink>
           </li>
           <li>
-            <NavLink className="bg-transparent text-slate-950 md:text-lg font-semibold">
+            <NavLink className="bg-transparent  md:text-lg ">
               <FaUser></FaUser> Admin Profile
             </NavLink>
           </li>
@@ -99,7 +78,7 @@ const DashBoard = () => {
             <li>
             <NavLink
               to="/dashboard/myclass"
-              className="bg-transparent text-slate-950 md:md:text-lg font-semibold"
+              className="bg-transparent  md:md:text-lg "
             >
               <div className="indicator">
                 <svg
@@ -116,7 +95,7 @@ const DashBoard = () => {
                     d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                   />
                 </svg>
-                <span className="badge font-semibold md:text-lg badge-md indicator-item">
+                <span className="badge  md:text-lg badge-md indicator-item">
                   {carts.length || 0}
                 </span>
               </div>
@@ -127,13 +106,13 @@ const DashBoard = () => {
           <li>
             <NavLink
               to="/dashboard/enrollClasses"
-              className="bg-transparent text-slate-950 md:text-lg font-semibold"
+              className="bg-transparent  md:text-lg "
             >
               <FaThList></FaThList> Enrolled Classes
             </NavLink>
           </li>
           <li>
-            <NavLink className="bg-transparent text-slate-950 md:text-lg font-semibold">
+            <NavLink className="bg-transparent  md:text-lg ">
               <FaUser></FaUser> Profile
             </NavLink>
           </li>
@@ -141,14 +120,6 @@ const DashBoard = () => {
           }
           
           {/* Students route link_____________________________________  */}
-          <li>
-            <button
-              onClick={handleLogOut}
-              className="bg-transparent text-slate-950 md:text-lg font-semibold"
-            >
-              <FiLogOut></FiLogOut> LogOut
-            </button>
-          </li>
 
           {/* _____________________________ Global item _____________________________ */}
           <div className="divider"></div>
