@@ -51,11 +51,11 @@ const MyClasses = () => {
     <div className="w-full p-3 md:p-12">
       <SectionTitle title="My Class"></SectionTitle>
       <div>
-        <div className="flex flex-col md:flex-row mb-5 md:items-center justify-between gap-5 px-5">
-          <h3 className="text-2xl font-mono font-bold">
+        <div className="flex flex-col md:flex-row mb-5 md:items-center justify-between gap-3 md:gap-5 px-5">
+          <h3 className=" md:text-2xl font-mono font-bold">
             total Course: {carts.length}
           </h3>
-          <h3 className="text-2xl font-mono font-bold">
+          <h3 className=" md:text-2xl font-mono font-bold">
             Total Price: ${totalPrice}
           </h3>
           <Link to="/dashboard/payment"><button className="btn text-white border hover:text-slate-800 bg-[#065c97]">
