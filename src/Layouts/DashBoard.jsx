@@ -53,7 +53,7 @@ const DashBoard = () => {
             <>
             <li>
             <NavLink
-              to="/"
+              to="/dashboard/manageclasses"
               className="bg-transparent  md:md:text-lg "
             >
              <FaVideo></FaVideo> ManageClasses
@@ -110,7 +110,7 @@ const DashBoard = () => {
             <li>
             <NavLink
               to="/dashboard/myclass"
-              className="bg-transparent  md:md:text-lg "
+              className="bg-transparent md:md:text-lg "
             >
               <div className="indicator">
                 <svg
@@ -159,20 +159,20 @@ const DashBoard = () => {
           <li>
             <NavLink
               to="/"
-              className="bg-transparent md:text-lg font-medium md:text-black"
+              className="bg-transparent md:text-lg font-medium"
             >
               Home
             </NavLink>
           </li>
           <li>
-            <NavLink className="bg-transparent md:text-lg font-medium md:text-black">
+            <NavLink className="bg-transparent md:text-lg font-medium">
               Instructors
             </NavLink>
           </li>
           <li>
             <NavLink
               to="/classes"
-              className="bg-transparent md:text-lg font-medium md:text-black"
+              className="bg-transparent md:text-lg font-medium"
             >
               Classes
             </NavLink>

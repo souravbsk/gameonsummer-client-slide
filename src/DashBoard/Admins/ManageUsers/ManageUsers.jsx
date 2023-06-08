@@ -91,7 +91,7 @@ const ManageUsers = () => {
     <div className="w-full p-3 md:p-12">
       <SectionTitle title="Manage Users"></SectionTitle>
       <div>
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto bg-slate-200 rounded-xl">
           <table className="table">
             {/* head */}
             <thead>
@@ -112,7 +112,7 @@ const ManageUsers = () => {
                   <td>{user?.email}</td>
                   <td>
                     {user?.role === "admin" ? (
-                      <span>admin</span>
+                      <span className="badge bg-[#570df8b6] text-white font-semibold">admin</span>
                     ) : (
                       <button onClick={() => handleMakeAdmin(user)}>
                         <FaUserShield></FaUserShield>
@@ -123,12 +123,12 @@ const ManageUsers = () => {
                     {user?.role === "admin" ? (
                       ""
                     ) : user?.role === "instructor" ? (
-                      <span>instructor</span>
+                      <span className="badge font-semibold text-white bg-[#6772E5] badge-accent">instructor</span>
                     ) : (
                       <select
                         onChange={() => handleUpdateRole(user)}
                         defaultValue={user?.role}
-                        className="select select-ghost max-w"
+                        className="select  max-w"
                       >
                         <option value="student">student</option>
                         <option value="instructor">instructor</option>
@@ -144,9 +144,10 @@ const ManageUsers = () => {
             {/* foot */}
             <tfoot>
               <tr>
-                <th>#</th>
+              <th>#</th>
                 <th>Name</th>
                 <th>Email</th>
+                <th>admin</th>
                 <th>Role</th>
                 <th>Action</th>
               </tr>

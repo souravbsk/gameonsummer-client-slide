@@ -14,7 +14,7 @@ const useInstructor = () => {
 
     } 
    })
-   console.log(isInstructor);
+
    return [isInstructor, isInstructorLoading]
 };
 

@@ -2,17 +2,60 @@ import React from "react";
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 import useAuth from "../../../Hooks/useAuth";
 import { useForm } from "react-hook-form";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
+const imgKey = import.meta.env.VITE_IMGBB_KEY;
 const AddAClass = () => {
   const { user } = useAuth();
+  const [axiosSecure] = useAxiosSecure();
 
   const {
     register,
+    reset,
     formState: { errors },
     handleSubmit,
   } = useForm();
+
+  const url = `https://api.imgbb.com/1/upload?key=${imgKey}`;
+
   const onSubmit = (data) => {
-    console.log(data);
+    const { availableSeats, className, image, price } = data;
+    const inputImage = image[0];
+    const formData = new FormData();
+    formData.append("image", inputImage);
+    fetch(url, {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((imageResponse) => {
+        if (imageResponse.success) {
+          const imgUrl = imageResponse.data?.display_url;
+          const newClass = {
+            className,
+            classImage: imgUrl,
+            instructorName: user?.displayName,
+            instructorEmail: user?.email,
+            availableSeats: parseFloat(availableSeats),
+            price: parseFloat(price),
+            enrolled: 0,
+            status: "pending",
+          };
+          axiosSecure.post("/classes", newClass).then((res) => {
+            if (res?.data?.insertedId) {
+              Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Class Successfully Added",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+              reset();
+            }
+          });
+        }
+      });
   };
   return (
     <div className="w-full p-3 md:p-12">
@@ -70,7 +113,9 @@ const AddAClass = () => {
                 className="input input-bordered w-full"
               />
               {errors.instructorEmail && (
-                <p className="text-red-500">{errors.instructorEmail?.message}</p>
+                <p className="text-red-500">
+                  {errors.instructorEmail?.message}
+                </p>
               )}
             </div>
             <div className="form-control w-full">
@@ -88,7 +133,9 @@ const AddAClass = () => {
                 <p className="text-red-600">Please Enter Valid Price</p>
               )}
               {errors.price && (
-                <p className="text-red-500">{errors.instructorEmail?.message}</p>
+                <p className="text-red-500">
+                  {errors.instructorEmail?.message}
+                </p>
               )}
             </div>
           </div>

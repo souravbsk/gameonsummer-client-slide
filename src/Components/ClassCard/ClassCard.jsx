@@ -4,11 +4,15 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import useCart from "../../Hooks/useCart";
+import useAdmin from "../../Hooks/useAdmin";
+import useInstructor from "../../Hooks/useInstructor";
 
 const ClassCard = ({ classItem }) => {
   const {user} = useAuth();
   const navigate = useNavigate()
   const [,refetch] = useCart();
+  const [isAdmin] =useAdmin();
+  const [isInstructor] = useInstructor();
 
   const {
     availableSeats,
@@ -69,7 +73,6 @@ const ClassCard = ({ classItem }) => {
   }
 
 
-
   return (
     <div className={`card border-2 bg-base-100 shadow-xl ${!availableSeats && "bg-red-100"}`}>
       <figure className="">
@@ -82,7 +85,7 @@ const ClassCard = ({ classItem }) => {
         <p>Instructor Name: {instructorName}</p>
 
         <div className=" border-t-2 pt-3 flex items-center w-full">
-          <button disabled={!availableSeats} onClick={handleAddCart} className="btn text-white hover:text-slate-900 bg-[#065C97]">Buy Now</button>
+          <button disabled={!availableSeats || isInstructor || isAdmin} onClick={handleAddCart} className="btn text-white hover:text-slate-900 bg-[#065C97]">Buy Now</button>
           <p className="text-right text-2xl font-bold ">${price}</p>
         </div>
       </div>
