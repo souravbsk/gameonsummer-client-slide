@@ -45,7 +45,7 @@ const router = createBrowserRouter([
       {
         path:"/instructorsClasses/:id",
         element:<InstructorsClasses></InstructorsClasses>,
-        loader: ({params}) => fetch(`http://localhost:5000/instructorClasses/${params?.id}`)
+        loader: ({params}) => fetch(`http://localhost:5000/instructorDetails/${params?.id}`)
       },
       {
         path: "/register",

@@ -55,7 +55,7 @@ const InstructorClassesList = () => {
 
   return (
     <div className="w-full p-3 md:p-12">
-      <SectionTitle title="Ours Classes"></SectionTitle>
+      <SectionTitle title="My Classes"></SectionTitle>
       <div>
       <div>
           <h3 className="text-2xl font-mono font-bold">
@@ -76,8 +76,8 @@ const InstructorClassesList = () => {
                 <th>enroll</th>
                 <th>availableSeats</th>
                 <th>price</th>
-  
-                <th>Review</th>
+
+                <th>Feedback</th>
                 <th>Status</th>
                 <th>Action</th>
               </tr>
@@ -161,9 +161,13 @@ const InstructorClassesList = () => {
 
             <tfoot>
               <tr>
-                <th></th>
+              <th>#</th>
                 <th>Course</th>
-                <th>Instructor</th>
+                <th>enroll</th>
+                <th>availableSeats</th>
+                <th>price</th>
+
+                <th>Feedback</th>
                 <th>Status</th>
                 <th>Action</th>
               </tr>

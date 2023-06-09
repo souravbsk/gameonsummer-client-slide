@@ -88,9 +88,10 @@ const ManageClasses = () => {
                 <th>#</th>
                 <th>Course</th>
                 <th>Instructor</th>
+                <th>Available seats</th>
                 <th>Status</th>
-                <th>Action</th>
                 <th>Review</th>
+                <th>Action</th>
               </tr>
             </thead>
             
@@ -118,33 +119,50 @@ const ManageClasses = () => {
                     </div>
                   </td>
                   <td>
+
                     <p> Email: {classItem?.instructorEmail}</p>
                     <br />
                     <span className="badge badge-ghost badge-md">
                       Name: {classItem?.instructorName}
                     </span>
                   </td>
+                  <td className="text-center">
+                    {classItem?.availableSeats}
+                  </td>
                   <td>
-                    <select
-                      onChange={(e) =>
-                        handleChangeStatus({
-                          statusValue: e.target.value,
-                          id: classItem._id,
-                        })
-                      }
-                      defaultValue={classItem?.status}
-                      className={`select  select-bordered select-sm  max-w ${
+                    <span className={`badge ${
                         classItem?.status === "pending"
                           ? "bg-warning"
                           : classItem?.status === "approved"
                           ? "bg-green-400"
                           : "bg-red-400"
-                      }`}
-                    >
-                      <option value="approved">Approved</option>
-                      <option value="denied">Denied</option>
-                      <option value="pending">Pending</option>
-                    </select>
+                      }`}>{classItem?.status}</span>
+      
+
+                     
+              
+                  </td>
+                  <td>
+                  <button   onClick={() =>
+                        handleChangeStatus({
+                          statusValue: "approved",
+                          id: classItem._id,
+                        })
+                      }  disabled={classItem?.status === "approved" || classItem?.status === "denied" } className="btn btn-sm bg-green-400">Approved</button>
+                      <button 
+                      
+                      onClick={() =>
+                        handleChangeStatus({
+                          statusValue: "denied",
+                          id: classItem._id,
+                        })
+                      } 
+
+                      disabled={classItem?.status === "approved" || classItem?.status === "denied" } className="btn btn-sm bg-red-400">denied</button>
+                    <Link to={`/dashboard/manageclasses/${classItem._id}`}>
+                      {" "}
+                      <button  className="badge btn-sm ">send feedback</button>
+                    </Link>
                   </td>
                   <td>
                     <button
@@ -153,12 +171,6 @@ const ManageClasses = () => {
                     >
                       <FaTrashAlt></FaTrashAlt>
                     </button>
-                  </td>
-                  <td>
-                    <Link to={`/dashboard/manageclasses/${classItem._id}`}>
-                      {" "}
-                      <button className="badge btn-sm ">View To Review</button>
-                    </Link>
                   </td>
                 </tr>
               ))}
