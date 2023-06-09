@@ -35,7 +35,7 @@ const Header = () => {
         </NavLink>
       </li>
       <li>
-        <NavLink className="bg-transparent text-lg font-medium md:text-black">
+        <NavLink to="/instructors" className="bg-transparent text-lg font-medium md:text-black">
           Instructors
         </NavLink>
       </li>

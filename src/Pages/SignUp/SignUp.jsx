@@ -38,7 +38,7 @@ const SignUp = () => {
       .then((result) => {
         const user = result.user;
         updateUserProfile(result.user, fullName, photoURL);
-        const newUser = {name:fullName, email: email.toLowerCase(), address, gender, phone };
+        const newUser = {name:fullName, email: email.toLowerCase(), address, gender, phone, image:photoURL };
         console.log(newUser,'nere');
         axios.post("http://localhost:5000/users", newUser).then((res) => {
           console.log(res);

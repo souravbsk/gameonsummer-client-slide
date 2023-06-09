@@ -4,6 +4,7 @@ import ClassCard from "../../../Components/ClassCard/ClassCard";
 import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { PushSpinner } from "react-spinners-kit";
+import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 
 const PopularClasses = () => {
   // const [classes, setClasses] = useState([]);
@@ -15,18 +16,11 @@ const PopularClasses = () => {
       return res.data;
     }
   );
-  // useEffect(() => {
-  //   axios.get("http://localhost:5000/topclasses").then((res) => {
-  //     setClasses(res.data);
-  //   });
-  // }, []);
 
   return (
     <div className="mt-32 container">
       <div>
-        <h3 className="text-center text-4xl font-bold font-mono underline mb-12">
-          Popular Classes
-        </h3>
+        <SectionTitle title="Popular Classes"></SectionTitle>
       </div>
       <div className="flex items-center justify-center">
         <PushSpinner size={30} color="#6772E5" loading={isClassLoading} />

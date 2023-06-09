@@ -14,7 +14,7 @@ const SocialLogin = ({from}) => {
         .then(result => {
             const user = result.user;
             console.log(user);
-            axios.post("http://localhost:5000/users",{email:user?.email,name: user?.displayName})
+            axios.post("http://localhost:5000/users",{email:user?.email,name: user?.displayName, image: user?.photoURL })
             .then(res => {
                 navigate(from,{replace:true})
             })

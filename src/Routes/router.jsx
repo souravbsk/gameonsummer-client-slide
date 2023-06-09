@@ -19,6 +19,8 @@ import StudentRoute from "./StudentRoute";
 import PaymentHistory from "../DashBoard/Students/PaymentHistory/PaymentHistory";
 import ReviewClasses from "../DashBoard/Admins/ReviewClasses/ReviewClasses";
 import NotFound from "../Pages/NotFound/NotFound";
+import Instructors from "../Pages/Instructors/Instructors";
+import InstructorsClasses from "../Shared/InstructorsClasses/InstructorsClasses";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +36,16 @@ const router = createBrowserRouter([
         element: <Classes></Classes>,
         loader:() => fetch("http://localhost:5000/classes")
 
+      },
+      {
+        path:"/instructors",
+        element:<Instructors></Instructors>,
+        loader: () => fetch("http://localhost:5000/Instructors")
+      },
+      {
+        path:"/instructorsClasses/:id",
+        element:<InstructorsClasses></InstructorsClasses>,
+        loader: ({params}) => fetch(`http://localhost:5000/instructorClasses/${params?.id}`)
       },
       {
         path: "/register",
