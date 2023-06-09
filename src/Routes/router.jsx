@@ -14,7 +14,9 @@ import AdminRoute from "./AdminRoute";
 import AddAClass from "../DashBoard/Instructor/AddAClass/AddAClass";
 import InstructorRoute from "./InstructorRoute";
 import ManageClasses from "../DashBoard/Admins/ManageClasses/ManageClasses";
-import MyClassesList from "../DashBoard/Instructor/MyClassesList/MyClassesList";
+import InstructorClassesList from "../DashBoard/Instructor/InstructorClassesList/InstructorClassesList";
+import StudentRoute from "./StudentRoute";
+import PaymentHistory from "../DashBoard/Students/PaymentHistory/PaymentHistory";
 
 const router = createBrowserRouter([
   {
@@ -43,19 +45,23 @@ const router = createBrowserRouter([
   },
   {
     path:"/dashboard",
-    element:<DashBoard></DashBoard>,
+    element:<PrivateRoute><DashBoard></DashBoard></PrivateRoute>,
     children:[
       {
         path:"/dashboard/myclass",
-        element:<PrivateRoute><MyClasses></MyClasses></PrivateRoute>
+        element:<StudentRoute><MyClasses></MyClasses></StudentRoute>
       },
       {
-        path:"/dashboard/payment",
-        element:<Payments></Payments>
+        path:"/dashboard/payment/:id",
+        element:<StudentRoute><Payments></Payments></StudentRoute>
       },
       {
         path:"/dashboard/enrollClasses",
-        element:<EnrollClasses></EnrollClasses>
+        element:<StudentRoute><EnrollClasses></EnrollClasses></StudentRoute>
+      },
+      {
+        path:"/dashboard/paymenthistory",
+        element:<StudentRoute><PaymentHistory></PaymentHistory></StudentRoute>
       },
       // ________ admin route___________
       {
@@ -72,7 +78,7 @@ const router = createBrowserRouter([
         element:<InstructorRoute><AddAClass></AddAClass></InstructorRoute>
       },{
         path:"/dashboard/myClassList",
-        element:<MyClassesList></MyClassesList>
+        element:<InstructorRoute><InstructorClassesList></InstructorClassesList></InstructorRoute>
       }
     ]
   }

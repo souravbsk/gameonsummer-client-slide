@@ -51,16 +51,11 @@ const MyClasses = () => {
     <div className="w-full p-3 md:p-12">
       <SectionTitle title="My Class"></SectionTitle>
       <div>
-        <div className="flex flex-col md:flex-row mb-5 md:items-center justify-between gap-3 md:gap-5 px-5">
+        <div className=" mb-5 px-5">
           <h3 className=" md:text-2xl font-mono font-bold">
-            total Course: {carts.length}
+            total Class: {carts.length}
           </h3>
-          <h3 className=" md:text-2xl font-mono font-bold">
-            Total Price: ${totalPrice}
-          </h3>
-          <Link to="/dashboard/payment"><button className="btn text-white border hover:text-slate-800 bg-[#065c97]">
-            Pay Now
-          </button></Link>
+          
         </div>
         <div className="overflow-x-auto bg-gray-100 rounded-lg">
           <table className="table table-xs">
@@ -77,6 +72,7 @@ const MyClasses = () => {
             </thead>
             <tbody>
               {/* row 1 */}
+             
               {carts.map((item, i) => (
                 <tr key={item._id}>
                   <th>{i + 1}</th>
@@ -99,9 +95,11 @@ const MyClasses = () => {
                   <td>{item?.instructorName}</td>
                   <td className="text-xl font-medium">${item?.price}</td>
                   <th>
-                    <button className="btn text-white  hover:text-slate-800 bg-[#065c97] btn-ghost btn-xs">
+                   <Link to={`/dashboard/payment/${item?._id}`}>
+                   <button className="btn hover:text-slate-800 text-white px-3 btn-sm bg-[#6772e5]">
                       Pay Now
                     </button>
+                   </Link>
                   </th>
                   <th>
                     <button

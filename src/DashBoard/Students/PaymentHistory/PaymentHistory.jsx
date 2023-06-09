@@ -1,34 +1,27 @@
-import React, { useEffect } from 'react';
-import useAuth from '../../../Hooks/useAuth';
-import axios from 'axios';
+import React from 'react';
+import SectionTitle from '../../../Components/SectionTitle/SectionTitle';
 import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
-import SectionTitle from '../../../Components/SectionTitle/SectionTitle';
+import useAuth from '../../../Hooks/useAuth';
 
-const EnrollClasses = () => {
+const PaymentHistory = () => {
+    const {user} = useAuth();
     const [axiosSecure] = useAxiosSecure();
-
-    const {user,loading} = useAuth();
-    const { refetch, data: enrollClass = [] } = useQuery({
-        queryKey: ['enrollClass', user?.email],
+    const {data: paymentHistoryData = [], isLoading:isPaymentHistoryLoading, refetch} = useQuery({
+        queryKey: ["paymentHistory",user?.email],
         queryFn: async () => {
-            const res = await axiosSecure(`/enrollClasses?email=${user?.email}`)
+            const res = await axiosSecure.get(`/student/paymentHistory?email=${user?.email}`)
             return res.data;
-        },
+        }
     })
 
-    console.log(enrollClass);
+    console.log(paymentHistoryData);
+
     return (
-        <div className="w-full p-3 md:p-12">
-      <SectionTitle title="Enrolled Classes"></SectionTitle>
-      <div>
-        <div className="flex flex-col md:flex-row mb-5 md:items-center justify-between gap-5 px-5">
-          <h3 className="text-2xl font-mono font-bold">
-            total Course: {enrollClass.length}
-          </h3>
-         
-        </div>
-        <div className="overflow-x-auto bg-gray-100 rounded-lg">
+        <div className='w-full p-3 md:p-12'>
+            <SectionTitle title="Payment History"></SectionTitle>
+            <div>
+            <div className="overflow-x-auto bg-gray-100 rounded-lg">
           <table className="table table-xs">
             {/* head */}
             <thead>
@@ -36,6 +29,7 @@ const EnrollClasses = () => {
                 <th>#</th>
                 <th>Image</th>
                 <th>instructor Email</th>
+                <th>transaction Id</th>
                 <th>instructor Name</th>
                 <th>Price</th>
                 <th>Payment Status</th>
@@ -43,7 +37,7 @@ const EnrollClasses = () => {
             </thead>
             <tbody>
               {/* row 1 */}
-              {enrollClass.map((item, i) => (
+              {paymentHistoryData?.map((item, i) => (
                 <tr key={item._id}>
                   <th>{i + 1}</th>
                   <td>
@@ -61,6 +55,7 @@ const EnrollClasses = () => {
                       </div>
                     </div>
                   </td>
+                  <td className='text-green-600 font-medium'>{item?.transactionId}</td>
                   <td>{item?.instructorEmail}</td>
 
                   <td>{item?.instructorName}</td>
@@ -87,9 +82,9 @@ const EnrollClasses = () => {
             </tfoot>
           </table>
         </div>
-      </div>
-    </div>
+            </div>
+        </div>
     );
 };
 
-export default EnrollClasses;
+export default PaymentHistory;

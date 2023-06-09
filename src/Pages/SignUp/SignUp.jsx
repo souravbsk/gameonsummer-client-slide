@@ -3,7 +3,7 @@ import Lottie from "lottie-react";
 
 import signupAnime from "../../assets/Login/signup.json";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import axios from "axios";
 import Swal from "sweetalert2";
@@ -38,8 +38,8 @@ const SignUp = () => {
       .then((result) => {
         const user = result.user;
         updateUserProfile(result.user, fullName, photoURL);
-        const newUser = {name:fullName, email, address, gender, phone };
-
+        const newUser = {name:fullName, email: email.toLowerCase(), address, gender, phone };
+        console.log(newUser,'nere');
         axios.post("http://localhost:5000/users", newUser).then((res) => {
           console.log(res);
           if (res?.data?.insertedId) {

@@ -4,8 +4,10 @@ import "./CheckoutForm.css";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import useAuth from "../../../Hooks/useAuth";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const CheckoutForm = ({ price, cart,refetch }) => {
+
   const stripe = useStripe();
   const element = useElements();
   const { user } = useAuth();
@@ -14,7 +16,7 @@ const CheckoutForm = ({ price, cart,refetch }) => {
   const [axiosSecure] = useAxiosSecure();
   const [clientSecret, setClientSecret] = useState("");
   const [transactionId, setTransactionId] = useState("");
-  console.log(cart);
+
   useEffect(() => {
     if (price > 0) {
       axiosSecure.post("/create-payment-intent", { price }).then((res) => {
@@ -64,15 +66,21 @@ const CheckoutForm = ({ price, cart,refetch }) => {
 
     if (paymentIntent?.status === "succeeded") {
       setTransactionId("");
+      console.log(paymentIntent);
       const transactionId = paymentIntent.id;
       setTransactionId(transactionId);
       const payment = {
         email: user?.email,
+        name: user?.displayName,
         transactionId: paymentIntent.id,
         price,
-        quantity: cart?.length,
-        cartItem: cart.map((item) => item._id),
-        classItemId: cart.map(item => item.classId),
+        quantity: 1,
+        cartItem: cart?._id,
+        classItemId: cart?.classId,
+        image: cart?.courseImg,
+        course: cart?.course,
+        instructorEmail: cart?.instructorEmail,
+        instructorName:cart?.instructorName,
       };
 
       axiosSecure.post("/payments",payment)
@@ -87,6 +95,7 @@ const CheckoutForm = ({ price, cart,refetch }) => {
               })
 
               refetch()
+              // navigate("/dashboard/myclass")
               
         }
       })
@@ -98,7 +107,7 @@ const CheckoutForm = ({ price, cart,refetch }) => {
 
   return (
     <div>
-      <form className="max-w-full mx-auto md:w-1/2 " onSubmit={handleSubmit}>
+      <form className="max-w-full bg-slate-400 py-5 md:p-5 rounded-3xl shadow-lg mx-auto md:w-1/2 " onSubmit={handleSubmit}>
         <CardElement
           options={{
             style: {
@@ -127,8 +136,8 @@ const CheckoutForm = ({ price, cart,refetch }) => {
       </form>
       <p className="text-center mt-10 text-red-600">{cardError}</p>
       {transactionId && (
-        <p className="text-green-600">
-          Transaction Success: Transaction Id : {transactionId}
+        <p className="text-green-600 text-sm">
+          Transaction Id : {transactionId}
         </p>
       )}
     </div>
