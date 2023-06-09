@@ -14,6 +14,8 @@ const Payments = () => {
     const cartItem = carts?.find(item => item?._id === id);
     const price = parseFloat(cartItem?.price?.toFixed(2));
 
+    console.log(carts);
+
     return (
         <div className='w-full overflow-hidden p-3 md:p-12'>
 

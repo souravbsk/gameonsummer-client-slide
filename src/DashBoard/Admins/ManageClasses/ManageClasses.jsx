@@ -5,6 +5,7 @@ import axios from "axios";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const ManageClasses = () => {
   const [axiosSecure] = useAxiosSecure();
@@ -142,7 +143,7 @@ const ManageClasses = () => {
                     </button>
                   </td>
                   <td>
-                    <button className="badge btn-sm ">View To Review</button>
+                   <Link to={`/dashboard/manageclasses/${classItem._id}`}> <button className="badge btn-sm ">View To Review</button></Link>
                   </td>
                 </tr>
               ))}

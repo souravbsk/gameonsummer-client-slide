@@ -3,6 +3,7 @@ import SectionTitle from '../../../Components/SectionTitle/SectionTitle';
 import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import useAuth from '../../../Hooks/useAuth';
+import moment from 'moment/moment';
 
 const PaymentHistory = () => {
     const {user} = useAuth();
@@ -28,8 +29,9 @@ const PaymentHistory = () => {
               <tr>
                 <th>#</th>
                 <th>Image</th>
-                <th>instructor Email</th>
+                <th>Date</th>
                 <th>transaction Id</th>
+                <th>instructor Email</th>
                 <th>instructor Name</th>
                 <th>Price</th>
                 <th>Payment Status</th>
@@ -55,6 +57,7 @@ const PaymentHistory = () => {
                       </div>
                     </div>
                   </td>
+                  <td>{moment(item?.date).format("'MMMM Do YYYY, h:mm:ss a'")}</td>
                   <td className='text-green-600 font-medium'>{item?.transactionId}</td>
                   <td>{item?.instructorEmail}</td>
 
@@ -62,7 +65,7 @@ const PaymentHistory = () => {
                   <td className="text-xl font-medium">${item?.price}</td>
                   <th>
                     <button className="btn py-0 text-white  hover:text-slate-800 bg-[#065c97] btn-ghost btn-xs">
-                    Paid
+                    Done
                     </button>
                   </th>
                   
@@ -74,6 +77,7 @@ const PaymentHistory = () => {
             <tr>
                 <th>#</th>
                 <th>Image</th>
+                <th>transaction Id</th>
                 <th>instructor Email</th>
                 <th>instructor Name</th>
                 <th>Price</th>

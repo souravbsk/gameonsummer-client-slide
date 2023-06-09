@@ -81,7 +81,9 @@ const CheckoutForm = ({ price, cart,refetch }) => {
         course: cart?.course,
         instructorEmail: cart?.instructorEmail,
         instructorName:cart?.instructorName,
+        date: new Date().toLocaleString(),
       };
+      console.log(payment);
 
       axiosSecure.post("/payments",payment)
       .then(res => {
