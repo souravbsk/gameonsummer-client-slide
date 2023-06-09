@@ -4,6 +4,7 @@ import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import useAuth from '../../../Hooks/useAuth';
 import moment from 'moment/moment';
+import { PushSpinner } from 'react-spinners-kit';
 
 const PaymentHistory = () => {
     const {user} = useAuth();
@@ -22,6 +23,9 @@ const PaymentHistory = () => {
         <div className='w-full p-3 md:p-12'>
             <SectionTitle title="Payment History"></SectionTitle>
             <div>
+        <div className="flex items-center justify-center">
+                <PushSpinner size={30} color="#6772E5" loading={isLoadingClasses} />
+              </div>
             <div className="overflow-x-auto bg-gray-100 rounded-lg">
           <table className="table table-xs">
             {/* head */}

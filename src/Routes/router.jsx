@@ -18,6 +18,7 @@ import InstructorClassesList from "../DashBoard/Instructor/InstructorClassesList
 import StudentRoute from "./StudentRoute";
 import PaymentHistory from "../DashBoard/Students/PaymentHistory/PaymentHistory";
 import ReviewClasses from "../DashBoard/Admins/ReviewClasses/ReviewClasses";
+import NotFound from "../Pages/NotFound/NotFound";
 
 const router = createBrowserRouter([
   {
@@ -87,7 +88,12 @@ const router = createBrowserRouter([
         element:<InstructorRoute><InstructorClassesList></InstructorClassesList></InstructorRoute>
       }
     ]
+  },
+  {
+    path:"*",
+    element: <NotFound></NotFound>
   }
+
 ]);
 
 export default router;

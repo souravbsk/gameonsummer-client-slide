@@ -6,6 +6,7 @@ import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import { PushSpinner } from "react-spinners-kit";
 
 const ManageClasses = () => {
   const [axiosSecure] = useAxiosSecure();
@@ -70,6 +71,15 @@ const ManageClasses = () => {
     <div className="w-full p-3 md:p-12">
       <SectionTitle title="Manage Classes"></SectionTitle>
       <div>
+      <div>
+          <h3 className="text-2xl font-mono font-bold">
+            total Classes: {classesData?.length}
+          </h3>
+         
+        </div>
+      <div className="flex items-center justify-center">
+                <PushSpinner size={30} color="#6772E5" loading={isLoadingClasses} />
+              </div>
         <div className="overflow-x-auto bg-slate-200 rounded-xl">
           <table className="table">
             {/* head */}
@@ -83,6 +93,8 @@ const ManageClasses = () => {
                 <th>Review</th>
               </tr>
             </thead>
+            
+            
             <tbody>
               {classesData?.map((classItem, i) => (
                 <tr key={classItem._id}>
@@ -143,7 +155,10 @@ const ManageClasses = () => {
                     </button>
                   </td>
                   <td>
-                   <Link to={`/dashboard/manageclasses/${classItem._id}`}> <button className="badge btn-sm ">View To Review</button></Link>
+                    <Link to={`/dashboard/manageclasses/${classItem._id}`}>
+                      {" "}
+                      <button className="badge btn-sm ">View To Review</button>
+                    </Link>
                   </td>
                 </tr>
               ))}

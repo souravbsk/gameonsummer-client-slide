@@ -40,6 +40,11 @@ const Header = () => {
         </NavLink>
       </li>
       <li>
+        <NavLink to="/page" className="bg-transparent text-lg font-medium md:text-black">
+          Page
+        </NavLink>
+      </li>
+      <li>
         <NavLink
           to="/classes"
           className="bg-transparent text-lg font-medium md:text-black"

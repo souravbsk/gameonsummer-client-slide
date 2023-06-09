@@ -1,5 +1,5 @@
 import React from "react";
-import { useLoaderData } from "react-router-dom";
+import { ScrollRestoration, useLoaderData } from "react-router-dom";
 import ClassCard from "../../Components/ClassCard/ClassCard";
 
 const Classes = () => {
@@ -12,9 +12,12 @@ const Classes = () => {
           All Classes
         </h3>
       </div>
+
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">{
       allClasses.map(classItem => <ClassCard key={classItem._id} classItem={classItem}></ClassCard>)
       }</div>
+      <ScrollRestoration></ScrollRestoration>
+
     </div>
   );
 };

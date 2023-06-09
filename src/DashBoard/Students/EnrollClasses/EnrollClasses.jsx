@@ -4,6 +4,7 @@ import axios from 'axios';
 import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import SectionTitle from '../../../Components/SectionTitle/SectionTitle';
+import { PushSpinner } from 'react-spinners-kit';
 
 const EnrollClasses = () => {
     const [axiosSecure] = useAxiosSecure();
@@ -22,12 +23,15 @@ const EnrollClasses = () => {
         <div className="w-full p-3 md:p-12">
       <SectionTitle title="Enrolled Classes"></SectionTitle>
       <div>
-        <div className="flex flex-col md:flex-row mb-5 md:items-center justify-between gap-5 px-5">
+        <div>
           <h3 className="text-2xl font-mono font-bold">
             total Course: {enrollClass.length}
           </h3>
          
         </div>
+        <div className="flex items-center justify-center">
+                <PushSpinner size={30} color="#6772E5" loading={isLoadingClasses} />
+              </div>
         <div className="overflow-x-auto bg-gray-100 rounded-lg">
           <table className="table table-xs">
             {/* head */}

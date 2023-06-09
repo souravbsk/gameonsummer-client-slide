@@ -2,6 +2,7 @@ import React from 'react';
 import useAuth from '../Hooks/useAuth';
 import { Navigate, useLocation } from 'react-router-dom';
 import useAdmin from '../Hooks/useAdmin';
+import { CubeSpinner } from 'react-spinners-kit';
 
 const AdminRoute = ({children}) => {
     const {user,loading} = useAuth();
@@ -9,7 +10,11 @@ const AdminRoute = ({children}) => {
     const [isAdmin, isAdminLoading] = useAdmin()
 
     if(loading || isAdminLoading){
-        return <progress className="progress w-56"></progress>
+        return (
+            <div className="flex justify-center items-center h-screen">
+              <CubeSpinner size={30} color="#6772E5" loading={loading} />
+            </div>
+          );
     }
     console.log(location);
     if(user && isAdmin){
