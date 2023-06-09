@@ -9,9 +9,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
-
+import "swiper/css/navigation";
 // import required modules
-import { Pagination } from "swiper";
+import { Pagination,Navigation, Autoplay } from "swiper";
 import { Link } from "react-router-dom";
 const PopulaInstructor = () => {
   const { data: Instructors, isLoading: isInstructor } = useQuery(
@@ -35,17 +35,32 @@ const PopulaInstructor = () => {
 
       <div>
         <Swiper
-          slidesPerView={3}
-          spaceBetween={30}
+          slidesPerView={1}
+          spaceBetween={10}
           pagination={{
             clickable: true,
           }}
+          breakpoints={{
+            640: {
+              slidesPerView: 2,
+              spaceBetween: 20,
+            },
+            768: {
+              slidesPerView: 3,
+              spaceBetween: 40,
+            },
+          }}
           loop={true}
-          modules={[Pagination]}
+          navigation={true}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
+          }}
+          modules={[Pagination,Navigation,Autoplay]}
           className="mySwiper"
         >
           {Instructors?.map((instructor) => (
-            <SwiperSlide className="pb-12 " key={instructor._id}>
+            <SwiperSlide className="pb-8 " key={instructor._id}>
               <div className="card border bg-base-100 shadow-xl">
                 <figure className="px-10 pt-10">
                   <img 
@@ -60,7 +75,8 @@ const PopulaInstructor = () => {
                   <p>Class Quantity: {instructor?.classQuantity}</p>
                   <p>Student: {instructor?.totalEnrolled}</p>
                   <div className="card-actions">
-                    <button className="btn hover:text-slate-900 bg-[#065C97] text-white">View Details</button>
+                  <Link to={`/instructorsClasses/${instructor._id}`}> <button className=" btn bg-[#065C97] text-white hover:text-slate-800 btn-md">See Classes</button></Link>
+
                   </div>
                 </div>
               </div>
