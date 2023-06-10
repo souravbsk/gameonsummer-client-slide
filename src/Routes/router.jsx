@@ -21,6 +21,9 @@ import ReviewClasses from "../DashBoard/Admins/ReviewClasses/ReviewClasses";
 import NotFound from "../Pages/NotFound/NotFound";
 import Instructors from "../Pages/Instructors/Instructors";
 import InstructorsClasses from "../Shared/InstructorsClasses/InstructorsClasses";
+import AdminHome from "../DashBoard/Admins/AdminHome/AdminHome";
+import StudentHome from "../DashBoard/Students/StudentHome/StudentHome";
+import InstructorHome from "../DashBoard/Instructor/InstructorHome/InstructorHome";
 
 const router = createBrowserRouter([
   {
@@ -45,7 +48,7 @@ const router = createBrowserRouter([
       {
         path:"/instructorsClasses/:id",
         element:<InstructorsClasses></InstructorsClasses>,
-        loader: ({params}) => fetch(`http://localhost:5000/instructorDetails/${params?.id}`)
+        loader: ({params}) => fetch(`http://localhost:5000/instructorClasses/${params?.id}`)
       },
       {
         path: "/register",
@@ -61,6 +64,10 @@ const router = createBrowserRouter([
     path:"/dashboard",
     element:<PrivateRoute><DashBoard></DashBoard></PrivateRoute>,
     children:[
+      {
+        path:"/dashboard/homestudent",
+        element:<StudentRoute><StudentHome></StudentHome></StudentRoute>
+      },
       {
         path:"/dashboard/myclass",
         element:<StudentRoute><MyClasses></MyClasses></StudentRoute>
@@ -78,6 +85,11 @@ const router = createBrowserRouter([
         element:<StudentRoute><PaymentHistory></PaymentHistory></StudentRoute>
       },
       // ________ admin route___________
+
+      {
+        path:"/dashboard/homeadmin",
+        element:<AdminRoute><AdminHome></AdminHome></AdminRoute>
+      },
       {
         path:"/dashboard/manageusers",
         element:<AdminRoute><ManageUsers></ManageUsers></AdminRoute>
@@ -92,6 +104,10 @@ const router = createBrowserRouter([
         element:<AdminRoute><ReviewClasses></ReviewClasses></AdminRoute>
       },
       //_____________Instructor__________
+      {
+        path:"/dashboard/homeinstructor",
+        element:<InstructorRoute><InstructorHome></InstructorHome></InstructorRoute>
+      },
       {
         path:"/dashboard/addaclass",
         element:<InstructorRoute><AddAClass></AddAClass></InstructorRoute>

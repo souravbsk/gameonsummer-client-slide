@@ -68,7 +68,7 @@ const PaymentHistory = () => {
                   <td>{item?.instructorName}</td>
                   <td className="text-xl font-medium">${item?.price}</td>
                   <th>
-                    <button className="btn py-0 text-white  hover:text-slate-800 bg-[#065c97] btn-ghost btn-xs">
+                    <button className="btn py-0 text-white  hover:text-slate-800 bg-[#313641] btn-ghost btn-xs">
                     Done
                     </button>
                   </th>

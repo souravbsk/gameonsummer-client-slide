@@ -28,7 +28,7 @@ const SocialLogin = ({from}) => {
             <p className='text-center text-red-600'>{error}</p>
              <div className="divider">OR</div>
              <div className='flex items-center justify-center'>
-                <button onClick={handleSignInGoogle} className='text-2xl shadow-lg bg-[#065C97] btn-circle flex items-center justify-center text-white'><FaGoogle></FaGoogle></button>
+                <button onClick={handleSignInGoogle} className='text-2xl shadow-lg bg-[#313641] btn-circle flex items-center justify-center text-white'><FaGoogle></FaGoogle></button>
              </div>
         </div>
     );

@@ -85,7 +85,7 @@ const ClassCard = ({ classItem }) => {
         <p>Instructor Name: {instructorName}</p>
 
         <div className=" border-t-2 pt-3 flex items-center w-full">
-          <button disabled={!availableSeats || isInstructor || isAdmin} onClick={handleAddCart} className="btn text-white hover:text-slate-900 bg-[#065C97]">Buy Now</button>
+          <button disabled={!availableSeats || isInstructor || isAdmin} onClick={handleAddCart} className="btn text-white hover:text-slate-900 bg-[#313641]">Buy Now</button>
           <p className="text-right text-2xl font-bold ">${price}</p>
         </div>
       </div>

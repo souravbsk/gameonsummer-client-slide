@@ -9,7 +9,7 @@ const Instructors = () => {
     console.log(instructorsData);
 
     return (
-        <div className='container mt-8'>
+        <div className='container pt-12'>
             <div>
                 <SectionTitle title="Instructors"></SectionTitle>
             </div>

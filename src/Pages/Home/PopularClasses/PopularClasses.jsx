@@ -5,9 +5,9 @@ import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { PushSpinner } from "react-spinners-kit";
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
-
+import { useSpring, animated } from '@react-spring/web'
 const PopularClasses = () => {
-  // const [classes, setClasses] = useState([]);
+
 
   const { data: classes, isLoading: isClassLoading } = useQuery(
     ["popularsClasses"],
@@ -17,8 +17,16 @@ const PopularClasses = () => {
     }
   );
 
+
+  const springs = useSpring({
+    from: { y: 100 },
+    to: { y: 0 },
+  })
+
+
+
   return (
-    <div className="mt-32 container">
+    <animated.div style={{reverse:true,...springs}} className="mt-8 md:mt-32 container">
       <div>
         <SectionTitle title="Popular Classes"></SectionTitle>
       </div>
@@ -33,13 +41,15 @@ const PopularClasses = () => {
       <div className="text-center mt-12">
         <Link to="/classes">
           {" "}
-          <button className="btn hover:text-slate-900 bg-[#065C97] text-white">
+          <button className="btn hover:text-slate-900 bg-[#313641] text-white">
             Explore More Classes
           </button>
         </Link>
       </div>
-    </div>
+    </animated.div>
   );
 };
 
+////#313641
+//#313641
 export default PopularClasses;

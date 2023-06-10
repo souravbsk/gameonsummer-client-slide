@@ -3,6 +3,7 @@ import {
   FaBars,
   FaCartPlus,
   FaCreditCard,
+  FaHome,
   FaList,
   FaThList,
   FaUser,
@@ -24,7 +25,7 @@ const DashBoard = () => {
   const [isAdmin] = useAdmin();
   const [isInstructor] = useInstructor();
   const [isStudent] = useStudent();
-  console.log(isStudent)
+  console.log(isStudent);
 
   return (
     <div className="drawer lg:drawer-open">
@@ -61,6 +62,14 @@ const DashBoard = () => {
             <>
               <li>
                 <NavLink
+                  to="/dashboard/homeadmin"
+                  className="bg-transparent  md:md:text-lg "
+                >
+                  <FaHome></FaHome> Dashboard
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
                   to="/dashboard/manageclasses"
                   className="bg-transparent  md:md:text-lg "
                 >
@@ -77,7 +86,7 @@ const DashBoard = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink className="bg-transparent  md:text-lg ">
+                <NavLink to="/" className="bg-transparent  md:text-lg ">
                   <FaUser></FaUser> Admin Profile
                 </NavLink>
               </li>
@@ -86,6 +95,14 @@ const DashBoard = () => {
 
           {isInstructor && (
             <>
+              <li>
+                <NavLink
+                  to="/dashboard/homeinstructor"
+                  className="bg-transparent  md:md:text-lg "
+                >
+                  <FaHome></FaHome> Dashboard
+                </NavLink>
+              </li>
               <li>
                 <NavLink
                   to="/dashboard/addaclass"
@@ -105,7 +122,7 @@ const DashBoard = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink className="bg-transparent  md:text-lg ">
+                <NavLink to="/" className="bg-transparent  md:text-lg ">
                   <FaUser></FaUser> Instructor Profile
                 </NavLink>
               </li>
@@ -116,6 +133,14 @@ const DashBoard = () => {
             //  _________________Students route link__________________
             isStudent && (
               <>
+              <li>
+                <NavLink
+                  to="/dashboard/homestudent"
+                  className="bg-transparent  md:md:text-lg "
+                >
+                  <FaHome></FaHome> Dashboard
+                </NavLink>
+              </li>
                 <li>
                   <NavLink
                     to="/dashboard/myclass"
@@ -161,7 +186,7 @@ const DashBoard = () => {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink className="bg-transparent  md:text-lg ">
+                  <NavLink to="/" className="bg-transparent  md:text-lg ">
                     <FaUser></FaUser> Profile
                   </NavLink>
                 </li>
@@ -178,7 +203,10 @@ const DashBoard = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink className="bg-transparent md:text-lg font-medium">
+            <NavLink
+              to="/instructors"
+              className="bg-transparent md:text-lg font-medium"
+            >
               Instructors
             </NavLink>
           </li>

@@ -13,6 +13,7 @@ import "swiper/css/navigation";
 // import required modules
 import { Pagination,Navigation, Autoplay } from "swiper";
 import { Link } from "react-router-dom";
+import { useSpring,animated } from "@react-spring/web";
 const PopulaInstructor = () => {
   const { data: Instructors, isLoading: isInstructor } = useQuery(
     ["popularsInstructor"],
@@ -23,9 +24,13 @@ const PopulaInstructor = () => {
   );
 
   console.log(Instructors);
+  const springs = useSpring({
+    from: { y: 100 },
+    to: { y: 0 },
+  })
 
   return (
-    <div className="mt-32 container">
+    <animated.div style={{...springs}} className="mt-8 md:mt-32 container">
       <div>
         <SectionTitle title="Popular Instructors"></SectionTitle>
       </div>
@@ -75,7 +80,7 @@ const PopulaInstructor = () => {
                   <p>Class Quantity: {instructor?.classQuantity}</p>
                   <p>Student: {instructor?.totalEnrolled}</p>
                   <div className="card-actions">
-                  <Link to={`/instructorsClasses/${instructor._id}`}> <button className=" btn bg-[#065C97] text-white hover:text-slate-800 btn-md">See Classes</button></Link>
+                  <Link to={`/instructorsClasses/${instructor._id}`}> <button className=" btn bg-[#313641] text-white hover:text-slate-800 btn-md">See Classes</button></Link>
 
                   </div>
                 </div>
@@ -87,12 +92,12 @@ const PopulaInstructor = () => {
       <div className="text-center mt-12">
         <Link to="/instructors">
           {" "}
-          <button className="btn hover:text-slate-900 bg-[#065C97] text-white">
+          <button className="btn hover:text-slate-900 bg-[#313641] text-white">
             Explore More Instructors
           </button>
         </Link>
       </div>
-    </div>
+    </animated.div>
   );
 };
 

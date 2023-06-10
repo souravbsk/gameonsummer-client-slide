@@ -7,7 +7,7 @@ const Classes = () => {
   const allClasses = useLoaderData();
   console.log(allClasses);
   return (
-    <div className="container mt-8">
+    <div className="container pt-12">
       <div>
       <SectionTitle title="All Classes"></SectionTitle>
       </div>

@@ -22,7 +22,7 @@ const InstructorCard = ({ instructor }) => {
         <p>Students: {instructor?.totalEnrolled}</p>
         <p>{instructor?.ClassName.map(item => <span className="badge text-white badge-outline badge-secondary">{item}  </span>)  || "not available"}</p>
         <div className="card-actions justify-end">
-         <Link to={`/instructorsClasses/${instructor._id}`}> <button className=" btn bg-[#065C97] text-white hover:text-slate-800 btn-md">See Classes</button></Link>
+         <Link to={`/instructorsClasses/${instructor._id}`}> <button className=" btn bg-[#313641] text-white hover:text-slate-800 btn-md">See Classes</button></Link>
         </div>
       </div>
     </div>

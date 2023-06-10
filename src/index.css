@@ -6,3 +6,18 @@
 .container{
     @apply max-w-full md:w-10/12 mx-auto px-3 md:px-0
 }
+
+
+ .active{
+    background: #313641 !important;
+    color: white !important;
+}
+
+
+
+.swiper-button-next, .swiper-button-prev{
+    background: #313641;
+    padding: 30px ;
+    border-radius: 50%;
+    color: white !important;
+}

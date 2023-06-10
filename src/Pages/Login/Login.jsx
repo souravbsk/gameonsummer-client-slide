@@ -109,7 +109,7 @@ const Login = () => {
 
                 <div className="form-control mt-6">
                   <input
-                    className="btn hover:text-slate-800 text-white bg-[#065C97]"
+                    className="btn hover:text-slate-800 text-white bg-[#313641]"
                     value="Sign Up"
                     type="submit"
                   />
@@ -117,7 +117,7 @@ const Login = () => {
               </form>
               <p className="text-center mt-5">
                 Create An Account ?{" "}
-                <Link to="/register" className="font-medium text-[#065C97]">
+                <Link to="/register" className="font-medium text-[#313641]">
                   Sign Up
                 </Link>{" "}
               </p>

@@ -8,17 +8,21 @@ import {
 } from "react-icons/fa";
 import { SiGamejolt } from "react-icons/si";
 import { MdImportContacts } from "react-icons/md";
+
+
+
+
 const Footer = () => {
   return (
-    <div className="bg-[#065C97]">
+    <div className="bg-[#313641]">
       <div className="p-10 container">
         <div className="grid grid-cols-1 md:grid-cols-3 mb-10 gap-8">
           <div>
             <div>
-              <NavLink className="text-2xl items-center mb-3 text-center flex justify-center gap-2 font-bold font-mono text-white">
+              <Link className="text-2xl items-center mb-3 text-center flex justify-center gap-2 font-bold font-mono text-white">
                 <SiGamejolt className="text-5xl"></SiGamejolt>
                 <h3>GameOnSummer</h3>
-              </NavLink>
+              </Link>
               <p className="text-center text-white">
                 Welcome to gameonsummer! We are passionate about creating
                 unforgettable summer vacations filled with adventure,
@@ -52,18 +56,18 @@ const Footer = () => {
 
         <div className="footer footer-center text-base-content rounded">
           <div className="grid grid-flow-col gap-4">
-            <NavLink className="link text-white font-medium text-lg link-hover">
+            <Link className="link text-white font-medium text-lg link-hover">
               About us
-            </NavLink>
-            <NavLink className="link text-white font-medium text-lg link-hover">
+            </Link>
+            <Link className="link text-white font-medium text-lg link-hover">
               Contact
-            </NavLink>
-            <NavLink className="link text-white font-medium text-lg link-hover">
+            </Link>
+            <Link className="link text-white font-medium text-lg link-hover">
               Jobs
-            </NavLink>
-            <NavLink className="link text-white font-medium text-lg link-hover">
+            </Link>
+            <Link className="link text-white font-medium text-lg link-hover">
               Press kit
-            </NavLink>
+            </Link>
           </div>
           <div>
             <div className="grid text-2xl text-white grid-flow-col gap-4">
@@ -80,7 +84,7 @@ const Footer = () => {
           </div>
           <div>
             <p className="text-white">
-              Copyright © 2023 - All right reserved by ACME Industries Ltd
+              Copyright © 2023 - All right reserved by GameOnSummer
             </p>
           </div>
         </div>
