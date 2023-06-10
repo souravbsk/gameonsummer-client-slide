@@ -2,6 +2,7 @@ import React from "react";
 import { useLoaderData } from "react-router-dom";
 import SectionTitle from "../../Components/SectionTitle/SectionTitle";
 import ClassCard from "../../Components/ClassCard/ClassCard";
+import PageHelmet from "../../Components/PageHelmet/PageHelmet";
 
 const InstructorsClasses = () => {
   const instructorsData = useLoaderData();
@@ -9,6 +10,7 @@ const InstructorsClasses = () => {
   console.log(instructorsData);
   return (
     <div className="container pt-32">
+      <PageHelmet>Instructor Classes</PageHelmet>
       <div className="card flex-col md:flex-row border-2 overflow-hidden card-side bg-base-100 shadow-xl">
         <img className="md:w-5/12 w-full max-w-full" src={instructorsData?.user?.image} alt="Movie" />
 

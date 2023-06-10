@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import SectionTitle from '../../../Components/SectionTitle/SectionTitle';
 import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import useAuth from '../../../Hooks/useAuth';
 import moment from 'moment/moment';
 import { PushSpinner } from 'react-spinners-kit';
+import { ThemeMoodContext } from '../../../Providers/ThemeProvider';
+import PageHelmet from '../../../Components/PageHelmet/PageHelmet';
 
 const PaymentHistory = () => {
     const {user} = useAuth();
     const [axiosSecure] = useAxiosSecure();
+    const {Dark} = useContext(ThemeMoodContext)
     const {data: paymentHistoryData = [], isLoading:isPaymentHistoryLoading, refetch} = useQuery({
         queryKey: ["paymentHistory",user?.email],
         queryFn: async () => {
@@ -21,10 +24,17 @@ const PaymentHistory = () => {
 
     return (
         <div className='w-full p-3 md:p-12'>
+          <PageHelmet>Payment History</PageHelmet>
             <SectionTitle title="Payment History"></SectionTitle>
             <div>
+            <div>
+          <h3 className={`text-2xl font-mono font-bold ${Dark && "text-white"}`}>
+            total History: {paymentHistoryData.length}
+          </h3>
+         
+        </div>
         <div className="flex items-center justify-center">
-                <PushSpinner size={30} color="#6772E5" loading={isLoadingClasses} />
+                <PushSpinner size={30} color="#6772E5" loading={isPaymentHistoryLoading} />
               </div>
             <div className="overflow-x-auto bg-gray-100 rounded-lg">
           <table className="table table-xs">

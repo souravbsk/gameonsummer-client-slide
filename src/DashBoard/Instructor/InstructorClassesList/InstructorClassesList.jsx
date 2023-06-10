@@ -7,6 +7,7 @@ import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { Rating } from "@smastrom/react-rating";
 import { PushSpinner } from "react-spinners-kit";
+import PageHelmet from "../../../Components/PageHelmet/PageHelmet";
 
 const InstructorClassesList = () => {
   const [axiosSecure] = useAxiosSecure();
@@ -55,6 +56,7 @@ const InstructorClassesList = () => {
 
   return (
     <div className="w-full p-3 md:p-12">
+      <PageHelmet>My Class List</PageHelmet>
       <SectionTitle title="My Classes"></SectionTitle>
       <div>
       <div>

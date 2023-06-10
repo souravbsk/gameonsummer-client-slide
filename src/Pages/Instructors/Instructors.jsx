@@ -2,6 +2,7 @@ import React from 'react';
 import { ScrollRestoration, useLoaderData } from 'react-router-dom';
 import SectionTitle from '../../Components/SectionTitle/SectionTitle';
 import InstructorCard from '../../Components/InstructorCard/InstructorCard';
+import PageHelmet from '../../Components/PageHelmet/PageHelmet';
 
 const Instructors = () => {
 
@@ -10,6 +11,7 @@ const Instructors = () => {
 
     return (
         <div className='container pt-32'>
+            <PageHelmet>Instructors</PageHelmet>
             <div>
                 <SectionTitle title="Instructors"></SectionTitle>
             </div>

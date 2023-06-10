@@ -5,6 +5,7 @@ import { Elements } from '@stripe/react-stripe-js';
 import CheckoutForm from './CheckoutForm';
 import { loadStripe } from '@stripe/stripe-js';
 import { useParams } from 'react-router-dom';
+import PageHelmet from '../../../Components/PageHelmet/PageHelmet';
 
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PK_TOKEN)
@@ -18,6 +19,7 @@ const Payments = () => {
 
     return (
         <div className='w-full overflow-hidden p-3 md:p-12'>
+            <PageHelmet>Check Out</PageHelmet>
 
             <SectionTitle title="Payments"></SectionTitle>
             <div>

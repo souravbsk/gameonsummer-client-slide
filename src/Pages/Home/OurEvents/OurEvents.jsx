@@ -14,14 +14,14 @@ const OurEvents = () => {
   const {Dark} = useContext(ThemeMoodContext)
   return (
     <div className="container  mt-8 md:mt-32">
-      <div>
+      <div className="pb-8">
         <SectionTitle title="Our Events"></SectionTitle>
       </div>
       <div>
         <VerticalTimeline>
           <VerticalTimelineElement
             className="vertical-timeline-element--work"
-            contentStyle={{ background: "#75d5e3", color: "#fff" }}
+            contentStyle={{ background: "#75d5e3", color: `${Dark ? "#fff" : "#1D232A"  }` }}
             contentArrowStyle={{ borderRight: "7px solid  #75d5e3" }}
           
             iconStyle={{ background: `${Dark ? "#1D232A" : "#F97316"}`, color: "#fff" }}
@@ -41,7 +41,7 @@ const OurEvents = () => {
           </VerticalTimelineElement>
           <VerticalTimelineElement
             className="vertical-timeline-element--work"
-            contentStyle={{ background: "#75d5e3", color: "#fff" }}
+            contentStyle={{ background: "#75d5e3", color: `${Dark ? "#fff" : "#1D232A"  }` }}
             contentArrowStyle={{ borderRight: "7px solid  #75d5e3" }}
           
             iconStyle={{ background: `${Dark ? "#1D232A" : "#F97316"}`, color: "#fff" }}
@@ -61,7 +61,7 @@ const OurEvents = () => {
           </VerticalTimelineElement>
           <VerticalTimelineElement
             className="vertical-timeline-element--work"
-            contentStyle={{ background: "#75d5e3", color: "#fff" }}
+            contentStyle={{ background: "#75d5e3", color: `${Dark ? "#fff" : "#1D232A"  }` }}
             contentArrowStyle={{ borderRight: "7px solid  #75d5e3" }}
           
             iconStyle={{ background: `${Dark ? "#1D232A" : "#F97316"}`, color: "#fff" }}

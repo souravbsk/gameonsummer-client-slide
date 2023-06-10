@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
@@ -7,8 +7,11 @@ import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import { PushSpinner } from "react-spinners-kit";
+import { ThemeMoodContext } from "../../../Providers/ThemeProvider";
+import PageHelmet from "../../../Components/PageHelmet/PageHelmet";
 
 const ManageClasses = () => {
+  const {Dark} = useContext(ThemeMoodContext)
   const [axiosSecure] = useAxiosSecure();
   const {
     data: classesData,
@@ -69,10 +72,11 @@ const ManageClasses = () => {
 
   return (
     <div className="w-full p-3 md:p-12">
+      <PageHelmet>Manage Classes</PageHelmet>
       <SectionTitle title="Manage Classes"></SectionTitle>
       <div>
       <div>
-          <h3 className="text-2xl font-mono font-bold">
+          <h3 className={`text-2xl font-mono font-bold ${Dark && "text-white"}`}>
             total Classes: {classesData?.length}
           </h3>
          
@@ -148,7 +152,7 @@ const ManageClasses = () => {
                           statusValue: "approved",
                           id: classItem._id,
                         })
-                      }  disabled={classItem?.status === "approved" || classItem?.status === "denied" } className="btn btn-sm bg-green-400">Approved</button>
+                      }  disabled={classItem?.status === "approved" || classItem?.status === "denied" } className="btn text-sm btn-sm bg-green-400">Approved</button>
                       <button 
                       
                       onClick={() =>
@@ -158,7 +162,7 @@ const ManageClasses = () => {
                         })
                       } 
 
-                      disabled={classItem?.status === "approved" || classItem?.status === "denied" } className="btn btn-sm bg-red-400">denied</button>
+                      disabled={classItem?.status === "approved" || classItem?.status === "denied" } className="btn text-sm py-0 btn-sm bg-red-400">denied</button>
                     <Link to={`/dashboard/manageclasses/${classItem._id}`}>
                       {" "}
                       <button  className="badge btn-sm ">send feedback</button>

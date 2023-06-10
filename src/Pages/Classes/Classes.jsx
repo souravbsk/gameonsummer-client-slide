@@ -2,12 +2,14 @@ import React from "react";
 import { ScrollRestoration, useLoaderData } from "react-router-dom";
 import ClassCard from "../../Components/ClassCard/ClassCard";
 import SectionTitle from "../../Components/SectionTitle/SectionTitle";
+import PageHelmet from "../../Components/PageHelmet/PageHelmet";
 
 const Classes = () => {
   const allClasses = useLoaderData();
   console.log(allClasses);
   return (
     <div className="container pt-32">
+      <PageHelmet>Classes</PageHelmet>
       <div>
       <SectionTitle title="All Classes"></SectionTitle>
       </div>

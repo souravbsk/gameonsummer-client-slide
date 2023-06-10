@@ -4,6 +4,7 @@ import useAuth from "../../../Hooks/useAuth";
 import { useForm } from "react-hook-form";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import PageHelmet from "../../../Components/PageHelmet/PageHelmet";
 
 const imgKey = import.meta.env.VITE_IMGBB_KEY;
 const AddAClass = () => {
@@ -59,10 +60,11 @@ const AddAClass = () => {
   };
   return (
     <div className="w-full p-3 md:p-12">
+      <PageHelmet>Add A Class</PageHelmet>
       <SectionTitle title="Add A Class"></SectionTitle>
       <div>
         <form
-          onSubmit={handleSubmit(onSubmit)}
+        onSubmit={handleSubmit(onSubmit)}
           className="card border-2xl bg-slate-100 p-3 md:p-10"
         >
           {/* //first row  */}

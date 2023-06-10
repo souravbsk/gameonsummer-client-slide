@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import { FaTrashAlt, FaUser, FaUserShield } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { PushSpinner } from "react-spinners-kit";
+import { ThemeMoodContext } from "../../../Providers/ThemeProvider";
+import PageHelmet from "../../../Components/PageHelmet/PageHelmet";
 
 const ManageUsers = () => {
+  const {Dark} = useContext(ThemeMoodContext)
   const [axiosSecure] = useAxiosSecure();
   const {
     data: users = [],
@@ -90,10 +93,11 @@ const ManageUsers = () => {
 
   return (
     <div className="w-full p-3 md:p-12">
+      <PageHelmet>Manage Users</PageHelmet>
       <SectionTitle title="Manage Users"></SectionTitle>
       <div>
       <div>
-          <h3 className="text-2xl font-mono font-bold">
+          <h3 className={`text-2xl font-mono font-bold ${Dark && "text-white"}`}>
             total Users: {users.length}
           </h3>
          

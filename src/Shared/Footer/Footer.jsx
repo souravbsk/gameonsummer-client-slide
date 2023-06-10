@@ -37,7 +37,7 @@ const Footer = () => {
               <FaMapMarkedAlt></FaMapMarkedAlt>
             </p>
             <p>
-              Address: 123, Hello Summer Way,
+              Address: kishoreganj Dhaka Bangladesh,
               <br /> Palmyra, VA 22233
               <br />
               Postal mail: P.O.Box 123, Palmyra, VA 22333
@@ -51,7 +51,7 @@ const Footer = () => {
               Office hours: 9:00am – 5:00pm <br />
               Telephone: (123) 456-78-90
               <br />
-              Email: info@example.com
+              Email: souravbsk01@gmail.com
             </p>
           </div>
         </div>

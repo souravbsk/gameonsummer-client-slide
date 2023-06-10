@@ -5,12 +5,16 @@ import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import SectionTitle from '../../../Components/SectionTitle/SectionTitle';
 import { PushSpinner } from 'react-spinners-kit';
+import { useContext } from 'react';
+import { ThemeMoodContext } from '../../../Providers/ThemeProvider';
+import PageHelmet from '../../../Components/PageHelmet/PageHelmet';
 
 const EnrollClasses = () => {
+  const {Dark} = useContext(ThemeMoodContext)
     const [axiosSecure] = useAxiosSecure();
 
     const {user,loading} = useAuth();
-    const { refetch, data: enrollClass = [] } = useQuery({
+    const { refetch, data: enrollClass = [] ,isLoading: isLoadingClasses} = useQuery({
         queryKey: ['enrollClass', user?.email],
         queryFn: async () => {
             const res = await axiosSecure(`/enrollClasses?email=${user?.email}`)
@@ -18,14 +22,15 @@ const EnrollClasses = () => {
         },
     })
 
-    console.log(enrollClass);
+
     return (
         <div className="w-full p-3 md:p-12">
+        <PageHelmet>Enroll Classes</PageHelmet>
       <SectionTitle title="Enrolled Classes"></SectionTitle>
       <div>
         <div>
-          <h3 className="text-2xl font-mono font-bold">
-            total Course: {enrollClass.length}
+          <h3 className={`text-2xl font-mono font-bold ${Dark && "text-white"}`}>
+            Enrolled Classes: {enrollClass.length}
           </h3>
          
         </div>

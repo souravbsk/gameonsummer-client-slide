@@ -9,6 +9,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import SocialLogin from "../../Components/SocialLogin/SocialLogin";
 import { ThemeMoodContext } from "../../Providers/ThemeProvider";
+import PageHelmet from "../../Components/PageHelmet/PageHelmet";
 
 const SignUp = () => {
   const {Dark} = useContext(ThemeMoodContext)
@@ -66,6 +67,7 @@ const SignUp = () => {
 
   return (
     <div className="pt-32">
+      <PageHelmet>Sign Up</PageHelmet>
       <div className=" hero w-full  min-h-screen ">
         <div className=" flex flex-col md:flex-row  items-center justify-between container">
           <div className="text-center flex-1 lg:text-left">
@@ -201,7 +203,7 @@ const SignUp = () => {
                       <span className="">Gender: </span>
                     </label>
                     <select
-                      className="select bg-transparent border  text-gray-400 select-bordered max-w-xs w-full"
+                      className={`select bg-transparent  ${Dark && "border-gray-400 bg-[#1D232A] text-white"} select-bordered max-w-xs w-full`}
                       {...register("gender")}
                     >
                       <option value="male">male</option>

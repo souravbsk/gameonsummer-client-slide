@@ -15,6 +15,9 @@ import { Pagination,Navigation, Autoplay } from "swiper";
 import { Link } from "react-router-dom";
 import { useSpring,animated } from "@react-spring/web";
 import { ThemeMoodContext } from "../../../Providers/ThemeProvider";
+
+
+
 const PopulaInstructor = () => {
 
   const {Dark} = useContext(ThemeMoodContext)
@@ -27,14 +30,17 @@ const PopulaInstructor = () => {
     }
   );
 
-  console.log(Instructors);
-  const springs = useSpring({
-    from: { y: 100 },
-    to: { y: 0 },
-  })
 
+
+  console.log(Instructors);
+  const styles = useSpring({
+    opacity: 1,
+    transform: 'translateY(0)',
+    from: { opacity: 0, transform: 'translateY(-100px)' },
+    // You can customize the animation properties here, like duration and easing
+  });
   return (
-    <animated.div style={{...springs}} className="mt-8 md:mt-32 container">
+    <animated.div style={{...styles}} className="mt-8 md:mt-32 container">
       <div>
         <SectionTitle title="Popular Instructors"></SectionTitle>
       </div>

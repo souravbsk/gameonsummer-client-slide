@@ -9,6 +9,7 @@ import useAuth from "../../Hooks/useAuth";
 import SocialLogin from "../../Components/SocialLogin/SocialLogin";
 import Swal from "sweetalert2";
 import { ThemeMoodContext } from "../../Providers/ThemeProvider";
+import PageHelmet from "../../Components/PageHelmet/PageHelmet";
 
 const Login = () => {
   const {Dark} = useContext(ThemeMoodContext)
@@ -51,7 +52,9 @@ const Login = () => {
 
   return (
     <div>
+      <PageHelmet>Sign In</PageHelmet>
       <div className="hero w-full pt-32 min-h-screen ">
+
         <div className="hero-content  container flex-col lg:flex-row">
           <div className="text-center flex-1 lg:text-left">
             <Lottie

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import useCart from "../../Hooks/useCart";
 import SectionTitle from "../../Components/SectionTitle/SectionTitle";
 import useAuth from "../../Hooks/useAuth";
@@ -7,8 +7,11 @@ import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { data } from "autoprefixer";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import PageHelmet from "../../Components/PageHelmet/PageHelmet";
+import { ThemeMoodContext } from "../../Providers/ThemeProvider";
 
 const MyClasses = () => {
+  const {Dark} = useContext(ThemeMoodContext)
   const [carts, refetch] = useCart();
   const [axiosSecure] = useAxiosSecure();
   const { user } = useAuth();
@@ -49,10 +52,11 @@ const MyClasses = () => {
 
   return (
     <div className="w-full p-3 md:p-12">
+      <PageHelmet>My Classes</PageHelmet>
       <SectionTitle title="My Class"></SectionTitle>
       <div>
         <div className=" mb-5 px-5">
-          <h3 className=" md:text-2xl font-mono font-bold">
+          <h3 className={`text-2xl font-mono font-bold ${Dark && "text-white"}`}>
             total Class: {carts.length}
           </h3>
           

@@ -35,7 +35,7 @@ const DashBoard = () => {
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-      <div className={` drawer-content   overflow-auto ${Dark && "bg-[#1D232A] "}`}>
+      <div className={` drawer-content h-screen  overflow-auto ${Dark && "bg-[#1D232A] "}`}>
         <label
           htmlFor="my-drawer-2"
           className="btn text-white bg-[#6772e5] m-5 drawer-button lg:hidden"
@@ -45,17 +45,17 @@ const DashBoard = () => {
             <FaBars></FaBars>
           </p>
         </label>
-        <div className="absolute top-10 right-10 ">
-          <button
-            className={`p-3 mt-0 ml-5 rounded-full ${
-              Dark
-                ? "text-slate-800 bg-yellow-100"
-                : " bg-slate-800 text-yellow-100"
-            }`}
-            onClick={() => setDark(!Dark)}
-          >
-            {Dark ? <FaMoon></FaMoon> : <FaSun></FaSun>}
-          </button>
+        <div className="absolute top-8 right-10 ">
+        <button
+              className={`p-2    mt-0 ml-3 rounded-full ${
+                Dark
+                  ? "text-slate-800 bg-yellow-100"
+                  : " bg-slate-800 text-yellow-100"
+              }`}
+              onClick={() => setDark(!Dark)}
+            >
+              {Dark ?  <FaSun ></FaSun> : <FaMoon></FaMoon>}
+            </button>
         </div>
         <div>
           <Outlet></Outlet>
