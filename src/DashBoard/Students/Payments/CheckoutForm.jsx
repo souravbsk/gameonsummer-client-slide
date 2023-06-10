@@ -129,7 +129,7 @@ const CheckoutForm = ({ price, cart,refetch }) => {
         <div className="text-center">
           <button
             disabled={!stripe || !clientSecret || processing}
-            className="btn btn-wide hover:text-slate-800 text-white bg-[#313641]"
+            className="btn btn-wide hover:text-slate-800 text-white bg-[#75d5e3]"
             type="submit"
           >
             Pay

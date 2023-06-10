@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FaClock, FaFootballBall, FaMapMarked } from "react-icons/fa";
 import { MdOutlineEmojiEvents, MdSportsCricket } from "react-icons/md";
 import { BiFootball } from "react-icons/bi";
@@ -9,7 +9,9 @@ import {
 } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
+import { ThemeMoodContext } from "../../../Providers/ThemeProvider";
 const OurEvents = () => {
+  const {Dark} = useContext(ThemeMoodContext)
   return (
     <div className="container  mt-8 md:mt-32">
       <div>
@@ -19,10 +21,10 @@ const OurEvents = () => {
         <VerticalTimeline>
           <VerticalTimelineElement
             className="vertical-timeline-element--work"
-            contentStyle={{ background: "#313641", color: "#fff" }}
-            contentArrowStyle={{ borderRight: "7px solid  #313641" }}
-            date="1 March"
-            iconStyle={{ background: "#F97316", color: "#fff" }}
+            contentStyle={{ background: "#75d5e3", color: "#fff" }}
+            contentArrowStyle={{ borderRight: "7px solid  #75d5e3" }}
+          
+            iconStyle={{ background: `${Dark ? "#1D232A" : "#F97316"}`, color: "#fff" }}
             icon={<BiFootball />}
           >
             <h3 className="vertical-timeline-element-title">Football Match</h3>
@@ -39,10 +41,10 @@ const OurEvents = () => {
           </VerticalTimelineElement>
           <VerticalTimelineElement
             className="vertical-timeline-element--work"
-            contentStyle={{ background: "#313641", color: "#fff" }}
-            contentArrowStyle={{ borderRight: "7px solid  #313641" }}
-            date="1 March"
-            iconStyle={{ background: "#F97316", color: "#fff" }}
+            contentStyle={{ background: "#75d5e3", color: "#fff" }}
+            contentArrowStyle={{ borderRight: "7px solid  #75d5e3" }}
+          
+            iconStyle={{ background: `${Dark ? "#1D232A" : "#F97316"}`, color: "#fff" }}
             icon={<MdSportsCricket />}
           >
             <h3 className="vertical-timeline-element-title">Cricket Match</h3>
@@ -59,10 +61,10 @@ const OurEvents = () => {
           </VerticalTimelineElement>
           <VerticalTimelineElement
             className="vertical-timeline-element--work"
-            contentStyle={{ background: "#313641", color: "#fff" }}
-            contentArrowStyle={{ borderRight: "7px solid  #313641" }}
-            date="1 March"
-            iconStyle={{ background: "#F97316", color: "#fff" }}
+            contentStyle={{ background: "#75d5e3", color: "#fff" }}
+            contentArrowStyle={{ borderRight: "7px solid  #75d5e3" }}
+          
+            iconStyle={{ background: `${Dark ? "#1D232A" : "#F97316"}`, color: "#fff" }}
             icon={<TbSwimming />}
           >
             <h3 className="vertical-timeline-element-title">Swimming</h3>
@@ -78,7 +80,7 @@ const OurEvents = () => {
             </p>
           </VerticalTimelineElement>
           <VerticalTimelineElement
-            iconStyle={{ background: "#F97316", color: "#fff" }}
+            iconStyle={{ background: `${Dark ? "#1D232A" : "#F97316"}`, color: "#fff" }}
             icon={<MdOutlineEmojiEvents />}
           >
            

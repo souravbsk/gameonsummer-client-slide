@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import useAuth from "../../Hooks/useAuth";
 import axios from "axios";
 import Swal from "sweetalert2";
@@ -6,8 +6,10 @@ import { useNavigate } from "react-router-dom";
 import useCart from "../../Hooks/useCart";
 import useAdmin from "../../Hooks/useAdmin";
 import useInstructor from "../../Hooks/useInstructor";
+import { ThemeMoodContext } from "../../Providers/ThemeProvider";
 
 const ClassCard = ({ classItem }) => {
+  const {Dark} = useContext(ThemeMoodContext)
   const {user} = useAuth();
   const navigate = useNavigate()
   const [,refetch] = useCart();
@@ -74,18 +76,18 @@ const ClassCard = ({ classItem }) => {
 
 
   return (
-    <div className={`card border-2 bg-base-100 shadow-xl ${!availableSeats && "bg-red-100"}`}>
+    <div className={`card border-2 bg-base-100 ${Dark ? "text-[#A6ADBA]" : ""} shadow-xl bg-transparent ${!availableSeats && "bg-red-100"}`}>
       <figure className="">
         <img src={classImage} alt="Shoes" className="rounded-xl rounded-b-none h-64 w-full" />
       </figure>
       <div className="card-body">
         <h2 className="card-title">{className}</h2>
-        <p>Enrolled: {enrolled}</p>
+        <p>Students: {enrolled}</p>
         <p>Available Seats: {availableSeats}</p>
         <p>Instructor Name: {instructorName}</p>
 
         <div className=" border-t-2 pt-3 flex items-center w-full">
-          <button disabled={!availableSeats || isInstructor || isAdmin} onClick={handleAddCart} className="btn text-white hover:text-slate-900 bg-[#313641]">Buy Now</button>
+          <button disabled={!availableSeats || isInstructor || isAdmin} onClick={handleAddCart} className={`btn text-white hover:text-slate-900 bg-[#75d5e3]`}>Buy Now</button>
           <p className="text-right text-2xl font-bold ">${price}</p>
         </div>
       </div>

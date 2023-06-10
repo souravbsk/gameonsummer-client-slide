@@ -9,15 +9,26 @@
 
 
  .active{
-    background: #313641 !important;
+    background: #75d5e3 !important;
     color: white !important;
 }
 
 
 
 .swiper-button-next, .swiper-button-prev{
-    background: #313641;
-    padding: 30px ;
+    background: #75d5e3;
+    padding: 25px ;
     border-radius: 50%;
     color: white !important;
+}
+
+.vertical-timeline-element{
+    margin: -4rem 0 !important;
+}
+
+
+.swiper-button-prev:after, .swiper-button-next:after{
+    font-size: 20px !important;
+    font-weight: 900;
+
 }

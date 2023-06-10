@@ -10,12 +10,12 @@ import ThemeProvider from "./Providers/ThemeProvider.jsx";
 const queryClient = new QueryClient();
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <ThemeProvider>
       <AuthProviders>
+    <ThemeProvider>
         <QueryClientProvider client={queryClient}>
           <RouterProvider router={router}></RouterProvider>
         </QueryClientProvider>
-      </AuthProviders>
     </ThemeProvider>
+      </AuthProviders>
   </React.StrictMode>
 );

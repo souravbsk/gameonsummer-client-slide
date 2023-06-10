@@ -1,16 +1,22 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import Header from "../Shared/Header/Header";
 import Footer from "../Shared/Footer/Footer";
 import { PushSpinner } from "react-spinners-kit";
+import { ThemeMoodContext } from "../Providers/ThemeProvider";
 
 const Main = () => {
   const navigation = useNavigate();
+  const {Dark} = useContext(ThemeMoodContext)
+
+
+
+
 
   return (
     <div>
       <Header></Header>
-      <main className="bg-[#F9F6EF] md:pb-32 pb-8">
+      <main className={`${Dark ? "bg-[#1D232A]" : "bg-[#75d5e30d] "} md:pb-32 pb-8`}>
         {navigation.state === "loading" ? (
           <div className="flex items-center h-screen justify-center">
             <PushSpinner size={30} color="#6772E5" loading={true} />
@@ -25,3 +31,11 @@ const Main = () => {
 };
 
 export default Main;
+
+
+/* 
+light yellow
+light orange 
+
+
+*/

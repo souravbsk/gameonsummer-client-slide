@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   FaBars,
   FaCartPlus,
   FaCreditCard,
   FaHome,
   FaList,
+  FaMoon,
+  FaSun,
   FaThList,
   FaUser,
   FaUsers,
@@ -20,7 +22,10 @@ import useCart from "../Hooks/useCart";
 import useAdmin from "../Hooks/useAdmin";
 import useInstructor from "../Hooks/useInstructor";
 import useStudent from "../Hooks/useStudent";
+import { ThemeMoodContext } from "../Providers/ThemeProvider";
+
 const DashBoard = () => {
+  const { Dark, setDark } = useContext(ThemeMoodContext);
   const [carts, refetch] = useCart();
   const [isAdmin] = useAdmin();
   const [isInstructor] = useInstructor();
@@ -30,7 +35,7 @@ const DashBoard = () => {
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content  overflow-auto ">
+      <div className={` drawer-content   overflow-auto ${Dark && "bg-[#1D232A] "}`}>
         <label
           htmlFor="my-drawer-2"
           className="btn text-white bg-[#6772e5] m-5 drawer-button lg:hidden"
@@ -40,12 +45,29 @@ const DashBoard = () => {
             <FaBars></FaBars>
           </p>
         </label>
-
-        <Outlet></Outlet>
+        <div className="absolute top-10 right-10 ">
+          <button
+            className={`p-3 mt-0 ml-5 rounded-full ${
+              Dark
+                ? "text-slate-800 bg-yellow-100"
+                : " bg-slate-800 text-yellow-100"
+            }`}
+            onClick={() => setDark(!Dark)}
+          >
+            {Dark ? <FaMoon></FaMoon> : <FaSun></FaSun>}
+          </button>
+        </div>
+        <div>
+          <Outlet></Outlet>
+        </div>
       </div>
       <div className="drawer-side">
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-        <ul className="menu bg-[#6772e5] p-4 space-y-2 max-w-full w-3/4 md:w-80 h-full  text-white">
+        <ul
+          className={`menu ${
+            Dark ? "bg-[#6772e5]" : "bg-[#1D232A]"
+          } p-4 space-y-2 max-w-full w-3/4 md:w-80 h-full  text-white`}
+        >
           {/* Sidebar content here */}
           <li>
             <NavLink
@@ -56,7 +78,7 @@ const DashBoard = () => {
               GameOnSummer
             </NavLink>
           </li>
-          <div className="divider"></div>
+          <div className={`divider ${Dark || "before:bg-gray-200 after:bg-gray-200 "}`}></div>
 
           {isAdmin && (
             <>
@@ -133,14 +155,14 @@ const DashBoard = () => {
             //  _________________Students route link__________________
             isStudent && (
               <>
-              <li>
-                <NavLink
-                  to="/dashboard/homestudent"
-                  className="bg-transparent  md:md:text-lg "
-                >
-                  <FaHome></FaHome> Dashboard
-                </NavLink>
-              </li>
+                <li>
+                  <NavLink
+                    to="/dashboard/homestudent"
+                    className="bg-transparent  md:md:text-lg "
+                  >
+                    <FaHome></FaHome> Dashboard
+                  </NavLink>
+                </li>
                 <li>
                   <NavLink
                     to="/dashboard/myclass"
@@ -195,7 +217,7 @@ const DashBoard = () => {
           }
 
           {/* _____________________________ Global item _____________________________ */}
-          <div className="divider"></div>
+          <div className={`divider ${Dark || "before:bg-gray-200 after:bg-gray-200  "}`}></div>
 
           <li>
             <NavLink to="/" className="bg-transparent md:text-lg font-medium">

@@ -8,7 +8,7 @@ const InstructorsClasses = () => {
 
   console.log(instructorsData);
   return (
-    <div className="container mt-8">
+    <div className="container pt-32">
       <div className="card flex-col md:flex-row border-2 overflow-hidden card-side bg-base-100 shadow-xl">
         <img className="md:w-5/12 w-full max-w-full" src={instructorsData?.user?.image} alt="Movie" />
 
@@ -22,8 +22,8 @@ const InstructorsClasses = () => {
           <p className="text-sm md:text-base font-semibold font-mono">Classes Name: {instructorsData?.ClassesName.map(item => <span className="badge md:text-xl px-3 py-3 mr-2 badge-secondary">{item}</span>) }</p>
         </div>
       </div>
-      <div className="mt-12">
-    <SectionTitle title={`${instructorsData?.user?.name} Classes`}></SectionTitle>
+      <div className="md:mt-32 mt-8">
+    <SectionTitle title={`Classes`}></SectionTitle>
     <div className="grid gap-8 md:grid-cols-3">
 
         {

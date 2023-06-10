@@ -1,18 +1,19 @@
 import React, { createContext, useState } from "react";
 
-export const themeMoodContext = createContext();
+export const ThemeMoodContext = createContext(null);
 
 const ThemeProvider = ({ children }) => {
-  const [isDarkMood, setDarkMood] = useState(false);
-  const themeValue = {
-    isDarkMood,
-    setDarkMood,
-  };
+  const [Dark, setDark] = useState(false);
+  const theme = {
+    Dark, 
+    setDark
+  }
+
 
   return (
-    <themeMoodContext.Provider value={themeValue}>
+    <ThemeMoodContext.Provider value={theme}>
       {children}
-    </themeMoodContext.Provider>
+    </ThemeMoodContext.Provider>
   );
 };
 

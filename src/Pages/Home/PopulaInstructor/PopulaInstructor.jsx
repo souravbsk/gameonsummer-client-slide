@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 import { useQuery } from "@tanstack/react-query";
 import { PushSpinner } from "react-spinners-kit";
@@ -14,7 +14,11 @@ import "swiper/css/navigation";
 import { Pagination,Navigation, Autoplay } from "swiper";
 import { Link } from "react-router-dom";
 import { useSpring,animated } from "@react-spring/web";
+import { ThemeMoodContext } from "../../../Providers/ThemeProvider";
 const PopulaInstructor = () => {
+
+  const {Dark} = useContext(ThemeMoodContext)
+
   const { data: Instructors, isLoading: isInstructor } = useQuery(
     ["popularsInstructor"],
     async () => {
@@ -66,7 +70,7 @@ const PopulaInstructor = () => {
         >
           {Instructors?.map((instructor) => (
             <SwiperSlide className="pb-8 " key={instructor._id}>
-              <div className="card border bg-base-100 shadow-xl">
+              <div className={`card border  shadow-xl ${Dark && "text-[#A6ADBA]"}`}>
                 <figure className="px-10 pt-10">
                   <img 
 
@@ -80,7 +84,7 @@ const PopulaInstructor = () => {
                   <p>Class Quantity: {instructor?.classQuantity}</p>
                   <p>Student: {instructor?.totalEnrolled}</p>
                   <div className="card-actions">
-                  <Link to={`/instructorsClasses/${instructor._id}`}> <button className=" btn bg-[#313641] text-white hover:text-slate-800 btn-md">See Classes</button></Link>
+                  <Link to={`/instructorsClasses/${instructor._id}`}> <button className=" btn bg-[#75d5e3] text-white hover:text-slate-800 btn-md">See Classes</button></Link>
 
                   </div>
                 </div>
@@ -92,7 +96,7 @@ const PopulaInstructor = () => {
       <div className="text-center mt-12">
         <Link to="/instructors">
           {" "}
-          <button className="btn hover:text-slate-900 bg-[#313641] text-white">
+          <button className="btn hover:text-slate-900 bg-[#75d5e3] text-white">
             Explore More Instructors
           </button>
         </Link>

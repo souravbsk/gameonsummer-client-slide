@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { ScrollRestoration, useLoaderData } from 'react-router-dom';
 import SectionTitle from '../../Components/SectionTitle/SectionTitle';
 import InstructorCard from '../../Components/InstructorCard/InstructorCard';
 
@@ -9,7 +9,7 @@ const Instructors = () => {
     console.log(instructorsData);
 
     return (
-        <div className='container pt-12'>
+        <div className='container pt-32'>
             <div>
                 <SectionTitle title="Instructors"></SectionTitle>
             </div>
@@ -18,6 +18,7 @@ const Instructors = () => {
                     instructorsData.map(instructor => <InstructorCard key={instructor._id} instructor={instructor}></InstructorCard>)
                 } 
             </div>
+            <ScrollRestoration></ScrollRestoration>
         </div>
     );
 };

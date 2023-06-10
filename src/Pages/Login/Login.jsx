@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Lottie from "lottie-react";
 
 import signupAnime from "../../assets/Login/signup.json";
@@ -8,8 +8,10 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import useAuth from "../../Hooks/useAuth";
 import SocialLogin from "../../Components/SocialLogin/SocialLogin";
 import Swal from "sweetalert2";
+import { ThemeMoodContext } from "../../Providers/ThemeProvider";
 
 const Login = () => {
+  const {Dark} = useContext(ThemeMoodContext)
   const [errorMessage, setErrorMessage] = useState("");
   const [showPass, setShowPass] = useState(true);
   const {loginUser} = useAuth();
@@ -49,7 +51,7 @@ const Login = () => {
 
   return (
     <div>
-      <div className="hero w-full min-h-screen bg-base-200">
+      <div className="hero w-full pt-32 min-h-screen ">
         <div className="hero-content  container flex-col lg:flex-row">
           <div className="text-center flex-1 lg:text-left">
             <Lottie
@@ -59,13 +61,13 @@ const Login = () => {
             />
             ;
           </div>
-          <div className="card w-full flex-1 shadow-2xl bg-base-100">
+          <div className={`card w-full flex-1  shadow-2xl border ${Dark ? "text-white" : "text-slate-800"}`}>
             <div className="card-body">
               <h1 className="text-3xl text-center mb-3 font-bold">Sign In</h1>
               <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="form-control w-full">
                   <label className="label">
-                    <span className="label-text">Email</span>
+                    <span className="">Email</span>
                   </label>
                   <input
                     name="email"
@@ -74,7 +76,7 @@ const Login = () => {
                     })}
                     aria-invalid={errors.email ? "true" : "false"}
                     placeholder="enter your email"
-                    className="input input-bordered w-full"
+                    className="input bg-transparent border-gray-400 input-bordered w-full"
                   />
                   {errors.email && (
                     <span className="text-red-500">
@@ -84,7 +86,7 @@ const Login = () => {
                 </div>
                 <div className="form-control  w-full">
                   <label className="label">
-                    <span className="label-text">Password</span>
+                    <span className="">Password</span>
                   </label>
                   <div className="relative">
                   <input
@@ -93,7 +95,7 @@ const Login = () => {
                       required: true,
                     })}
                     placeholder="password"
-                    className="input input-bordered w-full"
+                    className="input bg-transparent border-gray-400 input-bordered w-full"
                   />
 
                   
@@ -109,7 +111,7 @@ const Login = () => {
 
                 <div className="form-control mt-6">
                   <input
-                    className="btn hover:text-slate-800 text-white bg-[#313641]"
+                    className={`btn hover:text-slate-800  text-white bg-[#75d5e3]`}
                     value="Sign Up"
                     type="submit"
                   />
@@ -117,7 +119,7 @@ const Login = () => {
               </form>
               <p className="text-center mt-5">
                 Create An Account ?{" "}
-                <Link to="/register" className="font-medium text-[#313641]">
+                <Link to="/register" className="font-medium text-[#75d5e3]">
                   Sign Up
                 </Link>{" "}
               </p>

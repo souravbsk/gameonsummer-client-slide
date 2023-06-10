@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import {
   FaFacebook,
@@ -8,14 +8,16 @@ import {
 } from "react-icons/fa";
 import { SiGamejolt } from "react-icons/si";
 import { MdImportContacts } from "react-icons/md";
+import { ThemeMoodContext } from "../../Providers/ThemeProvider";
 
 
 
 
 const Footer = () => {
+  const {Dark} = useContext(ThemeMoodContext)
   return (
-    <div className="bg-[#313641]">
-      <div className="p-10 container">
+    <div className={`bg-gradient-to-r from-[#3db7d5] to-[#76e1f1] ${Dark && "from-[#1D232A] to-slate-800"}`}>
+      <div className=" pt-8 md:pt-32 container">
         <div className="grid grid-cols-1 md:grid-cols-3 mb-10 gap-8">
           <div>
             <div>
@@ -82,7 +84,7 @@ const Footer = () => {
               </Link>
             </div>
           </div>
-          <div>
+          <div className="pb-10">
             <p className="text-white">
               Copyright © 2023 - All right reserved by GameOnSummer
             </p>

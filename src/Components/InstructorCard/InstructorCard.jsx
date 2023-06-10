@@ -1,10 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { ThemeMoodContext } from "../../Providers/ThemeProvider";
 
 const InstructorCard = ({ instructor }) => {
+  const {Dark} = useContext(ThemeMoodContext)
   return (
-    <div className="card border bg-base-100 shadow-xl">
+    <div className={`card border  shadow-xl ${Dark && "text-[#A6ADBA]"} `}>
       <figure>
         <img
           src={instructor?.image}
@@ -22,7 +24,7 @@ const InstructorCard = ({ instructor }) => {
         <p>Students: {instructor?.totalEnrolled}</p>
         <p>{instructor?.ClassName.map(item => <span className="badge text-white badge-outline badge-secondary">{item}  </span>)  || "not available"}</p>
         <div className="card-actions justify-end">
-         <Link to={`/instructorsClasses/${instructor._id}`}> <button className=" btn bg-[#313641] text-white hover:text-slate-800 btn-md">See Classes</button></Link>
+         <Link to={`/instructorsClasses/${instructor._id}`}> <button className=" btn bg-[#75d5e3] text-white hover:text-slate-800 btn-md">See Classes</button></Link>
         </div>
       </div>
     </div>

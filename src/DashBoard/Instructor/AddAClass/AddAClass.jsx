@@ -171,7 +171,7 @@ const AddAClass = () => {
             </div>
           </div>
           <div className="form-control mt-6">
-            <button className="">Login</button>
+            <button className="bg-[#75D5E3] ">Login</button>
           </div>
         </form>
       </div>

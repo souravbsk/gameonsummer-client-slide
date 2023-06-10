@@ -41,7 +41,7 @@ const PopularClasses = () => {
       <div className="text-center mt-12">
         <Link to="/classes">
           {" "}
-          <button className="btn hover:text-slate-900 bg-[#313641] text-white">
+          <button className="btn hover:text-slate-900 bg-[#75d5e3] text-white">
             Explore More Classes
           </button>
         </Link>
@@ -50,6 +50,6 @@ const PopularClasses = () => {
   );
 };
 
-////#313641
-//#313641
+////#75d5e3
+//#75d5e3
 export default PopularClasses;

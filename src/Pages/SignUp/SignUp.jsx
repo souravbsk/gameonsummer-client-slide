@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Lottie from "lottie-react";
 
 import signupAnime from "../../assets/Login/signup.json";
@@ -8,8 +8,10 @@ import useAuth from "../../Hooks/useAuth";
 import axios from "axios";
 import Swal from "sweetalert2";
 import SocialLogin from "../../Components/SocialLogin/SocialLogin";
+import { ThemeMoodContext } from "../../Providers/ThemeProvider";
 
 const SignUp = () => {
+  const {Dark} = useContext(ThemeMoodContext)
   const [confirmError, setConfirmError] = useState("");
   const { createNewUser, updateUserProfile } = useAuth();
   const [errorMessage, setErrorMessage] = useState("");
@@ -63,8 +65,8 @@ const SignUp = () => {
   };
 
   return (
-    <div>
-      <div className=" w-full py-12 min-h-screen bg-base-200">
+    <div className="pt-32">
+      <div className=" hero w-full  min-h-screen ">
         <div className=" flex flex-col md:flex-row  items-center justify-between container">
           <div className="text-center flex-1 lg:text-left">
             <Lottie
@@ -74,14 +76,14 @@ const SignUp = () => {
             />
             ;
           </div>
-          <div className="card w-full flex-1 shadow-2xl bg-base-100">
+          <div className={`card w-full border flex-1 shadow-2xl ${Dark ? "text-white" : "text-slate-800"}`}>
             <div className="card-body">
               <h1 className="text-3xl text-center mb-3 font-bold">Sign Up</h1>
               <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="flex md:flex-row flex-col items-center gap-3">
                   <div className="form-control w-full">
                     <label className="label">
-                      <span className="label-text">Name</span>
+                      <span className="">Name</span>
                     </label>
                     <input
                       name="name"
@@ -90,12 +92,12 @@ const SignUp = () => {
                         maxLength: 80,
                       })}
                       placeholder="enter your name"
-                      className="input input-bordered w-full"
+                      className="input input-bordered bg-transparent border-gray-400 w-full"
                     />
                   </div>
                   <div className="form-control w-full">
                     <label className="label">
-                      <span className="label-text">Email</span>
+                      <span className="">Email</span>
                     </label>
                     <input
                       name="email"
@@ -104,7 +106,7 @@ const SignUp = () => {
                       })}
                       aria-invalid={errors.email ? "true" : "false"}
                       placeholder="enter your email"
-                      className="input input-bordered w-full"
+                      className="input input-bordered bg-transparent border-gray-400 w-full"
                     />
                     {errors.email && (
                       <span className="text-red-500">
@@ -116,7 +118,7 @@ const SignUp = () => {
                 <div className="flex md:flex-row flex-col items-center gap-3">
                   <div className="form-control w-full">
                     <label className="label">
-                      <span className="label-text">Password</span>
+                      <span className="">Password</span>
                     </label>
                     <input
                       required
@@ -127,7 +129,7 @@ const SignUp = () => {
                         pattern: /(?=.*[A-Z])(?=.*[!@#$&*])/,
                       })}
                       placeholder="password"
-                      className="input input-bordered w-full"
+                      className="input input-bordered bg-transparent border-gray-400 w-full"
                     />
                     {errors.password?.type === "minLength" && (
                       <p className="text-red-600">
@@ -145,14 +147,14 @@ const SignUp = () => {
                   </div>
                   <div className="form-control w-full">
                     <label className="label">
-                      <span className="label-text">Confirm Password</span>
+                      <span className="">Confirm Password</span>
                     </label>
                     <input
                       type="password"
                       {...register("confirmpassword", { required: true })}
                       name="confirmpassword"
                       placeholder="Confirm password"
-                      className="input input-bordered w-full"
+                      className="input input-bordered bg-transparent border-gray-400 w-full"
                     />
                     <p className="text-red-600">{confirmError}</p>
                   </div>
@@ -161,45 +163,45 @@ const SignUp = () => {
                 <div className="flex md:flex-row flex-col items-center gap-3">
                   <div className="form-control w-full">
                     <label className="label">
-                      <span className="label-text">Phone Number</span>
+                      <span className="">Phone Number</span>
                     </label>
                     <input
                       type="tel"
                       {...register("phone", { required: true })}
                       placeholder="Phone Number     "
-                      className="input input-bordered w-full"
+                      className="input input-bordered bg-transparent border-gray-400 w-full"
                     />
                   </div>
                   <div className="form-control w-full">
                     <label className="label">
-                      <span className="label-text">Address</span>
+                      <span className="">Address</span>
                     </label>
                     <input
                       type="address"
                       {...register("address", { required: true })}
                       placeholder="address"
-                      className="input input-bordered w-full"
+                      className="input input-bordered bg-transparent border-gray-400 w-full"
                     />
                   </div>
                 </div>
                 <div className="flex md:flex-row flex-col items-center gap-3">
                   <div className="form-control w-full">
                     <label className="label">
-                      <span className="label-text">Photo Url</span>
+                      <span className="">Photo Url</span>
                     </label>
                     <input
                       type="text"
                       {...register("photoURL", { required: true })}
                       placeholder="Photo URL"
-                      className="input input-bordered w-full"
+                      className="input input-bordered bg-transparent border-gray-400 w-full"
                     />
                   </div>
                   <div className="form-control w-full">
                     <label className="label">
-                      <span className="label-text">Gender: </span>
+                      <span className="">Gender: </span>
                     </label>
                     <select
-                      className="select select-bordered max-w-xs w-full"
+                      className="select bg-transparent border  text-gray-400 select-bordered max-w-xs w-full"
                       {...register("gender")}
                     >
                       <option value="male">male</option>
@@ -210,7 +212,7 @@ const SignUp = () => {
                 </div>
                 <div className="form-control mt-6">
                   <input
-                    className="btn hover:text-slate-800 text-white bg-[#313641]"
+                    className="btn hover:text-slate-800 text-white bg-[#75d5e3]"
                     value="Sign Up"
                     type="submit"
                   />
@@ -218,7 +220,7 @@ const SignUp = () => {
               </form>
               <p className="text-center mt-5">
                 Already have an account ?{" "}
-                <Link to="/login" className="font-medium text-[#313641]">
+                <Link to="/login" className="font-medium text-[#75d5e3]">
                   Sign In
                 </Link>{" "}
               </p>
