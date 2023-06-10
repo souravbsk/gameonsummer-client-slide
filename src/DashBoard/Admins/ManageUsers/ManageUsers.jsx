@@ -111,6 +111,7 @@ const ManageUsers = () => {
             <thead>
               <tr>
                 <th>#</th>
+                <th>Image</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>admin</th>
@@ -122,6 +123,16 @@ const ManageUsers = () => {
               {users.map((user, i) => (
                 <tr key={user._id}>
                   <th>{i + 1}</th>
+                  <td>
+                    
+                  <div className="avatar ">
+    <div className={`w-10 rounded-full ring-4 ring-offset-base-100 ring-offset-2 ${user?.role === "admin" ? "ring-[#7F4BF6]" : user?.role === "instructor" ? "ring-[#6772E5]" : "ring-slate-700" }`}>
+      <img src={user?.image} />
+    </div>
+  </div>
+                    
+
+                    </td>
                   <td>{user?.name}</td>
                   <td>{user?.email}</td>
                   <td>
@@ -168,6 +179,7 @@ const ManageUsers = () => {
             <tfoot>
               <tr>
                 <th>#</th>
+                <th>Image</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>admin</th>

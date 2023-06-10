@@ -101,18 +101,18 @@ const Header = () => {
               </label>
               <ul
                 tabIndex={0}
-                className="menu  top-10 -left-0 md:mt-10 menu-sm dropdown-content p-2 shadow bg-base-100 rounded-box "
+                className="menu  top-10 -left-0 md:mt-10 menu-sm dropdown-content p-2 shadow bg-base-300 w-fit rounded-box "
               >
                 <li>
                   <button
                     onClick={handleLogOut}
-                    className={`btn-sm text-lg ${
+                    className={`btn-sm py-2 font-semibold text-sm ${
                       Dark
                         ? "bg-slate-800 hover:text-slate-900"
                         : "bg-[#75d5e3]"
                     }  flex text-white hover:text-slate-800`}
                   >
-                    <FaSignOutAlt></FaSignOutAlt>
+                   LogOut <FaSignOutAlt></FaSignOutAlt>
                   </button>
                 </li>
               </ul>
@@ -135,7 +135,7 @@ const Header = () => {
 
   return (
     <div
-      className={`fixed rounded-b-2xl top-0 z-50 left-0 right-0 shadow-xl ${
+      className={`fixed rounded-b-[20%] top-0 z-50 left-0 right-0 shadow-xl ${
         Dark ? "bg-[#1D232A]" : "bg-white "
       }`}
     >
@@ -186,12 +186,6 @@ const Header = () => {
                     className="menu  top-16 -left-15 md:mt-10 menu-sm dropdown-content p-2 shadow bg-base-100 rounded-box "
                   >
                     <li>
-                      <a className="justify-between">
-                        Profile
-                        <span className="badge">New</span>
-                      </a>
-                    </li>
-                    <li>
                       <button
                         onClick={handleLogOut}
                         className={`btn-sm text-lg ${
@@ -200,7 +194,7 @@ const Header = () => {
                             : "bg-[#75d5e3]"
                         }  flex text-white hover:text-slate-800`}
                       >
-                        <FaSignOutAlt></FaSignOutAlt>
+                   LogOut     <FaSignOutAlt></FaSignOutAlt>
                       </button>
                     </li>
                   </ul>

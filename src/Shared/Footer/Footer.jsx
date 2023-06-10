@@ -16,7 +16,7 @@ import { ThemeMoodContext } from "../../Providers/ThemeProvider";
 const Footer = () => {
   const {Dark} = useContext(ThemeMoodContext)
   return (
-    <div className={`bg-gradient-to-r from-[#3db7d5] to-[#76e1f1] ${Dark && "from-[#1D232A] to-slate-800"}`}>
+    <div className={` bg-gradient-to-r from-[#3db7d5] to-[#76e1f1] ${Dark && "from-[#1D232A] to-slate-800"}`}>
       <div className=" pt-8 md:pt-32 container">
         <div className="grid grid-cols-1 md:grid-cols-3 mb-10 gap-8">
           <div>

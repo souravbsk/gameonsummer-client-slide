@@ -153,6 +153,7 @@ const ManageClasses = () => {
                           id: classItem._id,
                         })
                       }  disabled={classItem?.status === "approved" || classItem?.status === "denied" } className="btn text-sm btn-sm bg-green-400">Approved</button>
+                     <br />
                       <button 
                       
                       onClick={() =>
@@ -163,6 +164,7 @@ const ManageClasses = () => {
                       } 
 
                       disabled={classItem?.status === "approved" || classItem?.status === "denied" } className="btn text-sm py-0 btn-sm bg-red-400">denied</button>
+                    <br />
                     <Link to={`/dashboard/manageclasses/${classItem._id}`}>
                       {" "}
                       <button  className="badge btn-sm ">send feedback</button>

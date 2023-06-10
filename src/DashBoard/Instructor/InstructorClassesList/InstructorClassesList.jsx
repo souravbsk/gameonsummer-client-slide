@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
@@ -8,8 +8,10 @@ import Swal from "sweetalert2";
 import { Rating } from "@smastrom/react-rating";
 import { PushSpinner } from "react-spinners-kit";
 import PageHelmet from "../../../Components/PageHelmet/PageHelmet";
+import { ThemeMoodContext } from "../../../Providers/ThemeProvider";
 
 const InstructorClassesList = () => {
+  const {Dark} = useContext(ThemeMoodContext)
   const [axiosSecure] = useAxiosSecure();
   const { user } = useAuth();
   const {
@@ -60,7 +62,7 @@ const InstructorClassesList = () => {
       <SectionTitle title="My Classes"></SectionTitle>
       <div>
       <div>
-          <h3 className="text-2xl font-mono font-bold">
+          <h3 className={`text-2xl font-mono font-bold ${Dark && "text-white"}`}>
             total Classes: {classesData?.length}
           </h3>
          
@@ -100,9 +102,7 @@ const InstructorClassesList = () => {
                       </div>
                       <div>
                         <div className="font-bold">{classItem?.className}</div>
-                        <div className="text-sm font-medium ">
-                          Price: ${classItem?.price}
-                        </div>
+                        
                       </div>
                     </div>
                   </td>
@@ -121,7 +121,7 @@ const InstructorClassesList = () => {
                     </div>
                     <br />
                     <span >
-                      {classItem?.review?.reviewText || "  ..."}
+                      {classItem?.review?.reviewText || ""}
                     </span>
                   </td>
                   <th>

@@ -76,13 +76,13 @@ const PopulaInstructor = () => {
         >
           {Instructors?.map((instructor) => (
             <SwiperSlide className="pb-8 " key={instructor._id}>
-              <div className={`card border  shadow-xl ${Dark && "text-[#A6ADBA]"}`}>
+              <div className={`card relative border  shadow-xl ${Dark && "text-[#A6ADBA]"}`}>
                 <figure className="px-10 pt-10">
                   <img 
 
                     src={instructor?.image}
                     alt="Shoes"
-                    className="rounded-xl h-48 w-full"
+                    className="rounded-full  w-28 h-28"
                   />
                 </figure>
                 <div className="card-body items-center text-center">

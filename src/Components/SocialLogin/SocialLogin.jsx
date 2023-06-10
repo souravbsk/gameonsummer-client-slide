@@ -27,7 +27,6 @@ const SocialLogin = ({from}) => {
     }
     return (
         <div>
-            <p className='text-center text-red-600'>{error}</p>
              <div className={`divider ${Dark ? "before:bg-white after:bg-white" : ""}`}>OR</div>
              <div className='flex items-center justify-center'>
                 <button onClick={handleSignInGoogle} className='text-2xl shadow-lg bg-[#75d5e3] btn-circle flex items-center justify-center text-white'><FaGoogle></FaGoogle></button>
