@@ -3,6 +3,7 @@ import HeroSlider from "../HeaoSlider/HeroSlider";
 import PopularClasses from "../PopularClasses/PopularClasses";
 import PopulaInstructor from "../PopulaInstructor/PopulaInstructor";
 import OurEvents from "../OurEvents/OurEvents";
+import MailingList from "../MailingList/MailingList";
 const Home = () => {
   return (
     <div>
@@ -10,6 +11,7 @@ const Home = () => {
       <PopularClasses></PopularClasses>
       <PopulaInstructor></PopulaInstructor>
       <OurEvents></OurEvents>
+      <MailingList></MailingList>
     </div>
   );
 };

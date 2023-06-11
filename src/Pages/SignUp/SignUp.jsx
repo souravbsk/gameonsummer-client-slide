@@ -77,7 +77,7 @@ const SignUp = () => {
   
 
   return (
-    <div className="pt-32">
+    <div className="pt-32 pb-8 md:pb-32">
       <PageHelmet>Sign Up</PageHelmet>
       <div className=" hero w-full  min-h-screen ">
         <div className=" flex flex-col md:flex-row  items-center justify-between container">

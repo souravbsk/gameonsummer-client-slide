@@ -69,8 +69,8 @@ const Header = () => {
 
           {  isStudent && (
               <li>
-                <div className="bg-gray-900 text-white ">
-                  <div className="indicator">
+                <li className="bg-gray-900 text-white ">
+                  <li className="indicator">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       className="h-5 w-5"
@@ -88,8 +88,8 @@ const Header = () => {
                     <span className="badge font-semibold text-lg badge-md indicator-item">
                       {carts.length || 0}
                     </span>
-                  </div>
-                </div>
+                  </li>
+                </li>
               </li>
             )}
           <li className="hidden md:block">

@@ -15,7 +15,7 @@ const Classes = () => {
   })
 
   return (
-    <div className="container pt-32">
+    <div className="container pt-32 pb-8 md:pb-32">
       <PageHelmet>Classes</PageHelmet>
       <div>
       <SectionTitle title="All Classes"></SectionTitle>

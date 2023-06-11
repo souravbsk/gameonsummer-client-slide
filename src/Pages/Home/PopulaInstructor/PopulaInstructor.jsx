@@ -31,7 +31,6 @@ const PopulaInstructor = () => {
 
 
 
-  console.log(Instructors);
   const styles = useSpring({
     opacity: 1,
     transform: 'translateY(0)',

@@ -9,7 +9,7 @@ const InstructorsClasses = () => {
 
   console.log(instructorsData);
   return (
-    <div className="container pt-32">
+    <div className="container pb-8 md:pb-32 pt-32">
       <PageHelmet>Instructor Classes</PageHelmet>
       <div className="card flex-col md:flex-row border-2 overflow-hidden card-side bg-base-100 shadow-xl">
         <img className="md:w-5/12 w-full max-w-full" src={instructorsData?.user?.image} alt="Movie" />

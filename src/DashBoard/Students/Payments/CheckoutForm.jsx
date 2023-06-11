@@ -6,7 +6,9 @@ import useAuth from "../../../Hooks/useAuth";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 
-const CheckoutForm = ({ price, cart,refetch }) => {
+const 
+
+CheckoutForm = ({ price, cart,refetch }) => {
 
   const stripe = useStripe();
   const element = useElements();

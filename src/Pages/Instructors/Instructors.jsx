@@ -18,7 +18,7 @@ const Instructors = () => {
     
 
     return (
-        <div  className='container pt-32'>
+        <div  className='container pt-32 pb-8 md:pb-32'>
             <PageHelmet>Instructors</PageHelmet>
             <div>
                 <SectionTitle title="Instructors"></SectionTitle>

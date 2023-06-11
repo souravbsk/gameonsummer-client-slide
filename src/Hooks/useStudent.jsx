@@ -7,7 +7,6 @@ import { useQuery } from '@tanstack/react-query';
 const useStudent = () => {
 
     const {user} = useAuth();
-    console.log(user);
     const [axiosSecure]= useAxiosSecure();
     const {data:isStudent, isLoading: isStudentLoading} = useQuery({
         queryKey:['isStudent', user?.email],

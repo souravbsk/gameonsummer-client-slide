@@ -62,7 +62,7 @@ const Login = () => {
   return (
     <div>
       <PageHelmet>Sign In</PageHelmet>
-      <div className="hero w-full pt-32 min-h-screen ">
+      <div className="hero w-full pt-32 pb-8 md:pb-32 min-h-screen ">
 
         <div className="hero-content  container flex-col lg:flex-row">
           <div className="text-center flex-1 lg:text-left">

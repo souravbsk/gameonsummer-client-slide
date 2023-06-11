@@ -16,7 +16,7 @@ const Main = () => {
   return (
     <div>
       <Header></Header>
-      <main className={`${Dark ? "bg-[#1D232A]" : "bg-[#75d5e30d] "} md:pb-32 pb-8`}>
+      <main className={`${Dark ? "bg-[#1D232A]" : "bg-[#75d5e30d] "}`}>
         {navigation.state === "loading" ? (
           <div className="flex items-center h-screen justify-center">
             <PushSpinner size={30} color="#6772E5" loading={true} />

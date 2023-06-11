@@ -57,7 +57,7 @@ const InstructorClassesList = () => {
   };
 
   return (
-    <div className="w-full p-3 md:p-12">
+    <div className="w-full   p-3 md:p-12">
       <PageHelmet>My Class List</PageHelmet>
       <SectionTitle title="My Classes"></SectionTitle>
       <div>
