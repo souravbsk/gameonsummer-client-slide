@@ -3,13 +3,22 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper";
+import { useSpring,animated } from "@react-spring/web";
 const HeroSlider = () => {
+
+  const springs = useSpring({
+    from: { y: -100 },
+    to: { y: 0 },
+  })
+
+
   return (
     <div className="">
-      <div className="pt-16 ">
+      <animated.div      style={{...springs}} className="pt-16 ">
       <Swiper
         navigation={true}
         loop={true}
+   
         modules={[Navigation]}
         className="mySwiper  rounded-b-[20%]"
       >
@@ -84,7 +93,7 @@ const HeroSlider = () => {
           </div>
         </SwiperSlide>
       </Swiper>
-    </div>
+    </animated.div>
     </div>
   );
 };

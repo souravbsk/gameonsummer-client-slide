@@ -17,7 +17,6 @@ import { useSpring,animated } from "@react-spring/web";
 import { ThemeMoodContext } from "../../../Providers/ThemeProvider";
 
 
-
 const PopulaInstructor = () => {
 
   const {Dark} = useContext(ThemeMoodContext)
@@ -25,7 +24,7 @@ const PopulaInstructor = () => {
   const { data: Instructors, isLoading: isInstructor } = useQuery(
     ["popularsInstructor"],
     async () => {
-      const res = await axios.get("http://localhost:5000/topInstructor");
+      const res = await axios.get("https://summer-camp-server-one.vercel.app/topInstructor");
       return res.data;
     }
   );

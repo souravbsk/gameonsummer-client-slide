@@ -42,7 +42,7 @@ const ClassCard = ({ classItem }) => {
     }
 
     if(user && user?.email){
-      axios.post("http://localhost:5000/carts",newCourse)
+      axios.post("https://summer-camp-server-one.vercel.app/carts",newCourse)
       .then(data => {
         if(data?.data?.insertedId){
           refetch()
@@ -87,7 +87,7 @@ const ClassCard = ({ classItem }) => {
         <p>Instructor Name: {instructorName}</p>
 
         <div className=" border-t-2 pt-3 flex items-center w-full">
-          <button disabled={!availableSeats || isInstructor || isAdmin} onClick={handleAddCart} className={`btn text-white hover:text-slate-900 bg-[#75d5e3]`}>Buy Now</button>
+          <button disabled={!availableSeats || isInstructor || isAdmin} onClick={handleAddCart} className={`btn text-white hover:text-slate-900 bg-[#75d5e3]`}>Enroll Now</button>
           <p className="text-right text-2xl font-bold ">${price}</p>
         </div>
       </div>

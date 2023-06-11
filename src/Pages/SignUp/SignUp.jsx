@@ -3,13 +3,14 @@ import Lottie from "lottie-react";
 
 import signupAnime from "../../assets/Login/signup.json";
 import { useForm } from "react-hook-form";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, ScrollRestoration, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import axios from "axios";
 import Swal from "sweetalert2";
 import SocialLogin from "../../Components/SocialLogin/SocialLogin";
 import { ThemeMoodContext } from "../../Providers/ThemeProvider";
 import PageHelmet from "../../Components/PageHelmet/PageHelmet";
+import { useSpring,animated } from "@react-spring/web";
 
 const SignUp = () => {
   const {Dark} = useContext(ThemeMoodContext)
@@ -43,7 +44,7 @@ const SignUp = () => {
         updateUserProfile(result.user, fullName, photoURL);
         const newUser = {name:fullName, email: email.toLowerCase(), address, gender, phone, image:photoURL };
         console.log(newUser,'nere');
-        axios.post("http://localhost:5000/users", newUser).then((res) => {
+        axios.post("https://summer-camp-server-one.vercel.app/users", newUser).then((res) => {
           console.log(res);
           if (res?.data?.insertedId) {
             reset();
@@ -65,6 +66,16 @@ const SignUp = () => {
     console.log(data);
   };
 
+
+
+    // spring animation
+    const zoomIn = useSpring({
+      from: { transform: 'scale(0)' },
+      to: { transform: 'scale(1)' },
+    });
+  
+  
+
   return (
     <div className="pt-32">
       <PageHelmet>Sign Up</PageHelmet>
@@ -78,7 +89,7 @@ const SignUp = () => {
             />
             ;
           </div>
-          <div className={`card w-full border flex-1 shadow-2xl ${Dark ? "text-white" : "text-slate-800"}`}>
+          <animated.div style={{...zoomIn}} className={`card w-full border flex-1 shadow-2xl ${Dark ? "text-white" : "text-slate-800"}`}>
             <div className="card-body">
               <h1 className="text-3xl text-center mb-3 font-bold">Sign Up</h1>
               <form onSubmit={handleSubmit(onSubmit)}>
@@ -229,9 +240,10 @@ const SignUp = () => {
               <p className="text-center text-red-600">{errorMessage}</p>
               <SocialLogin from={from}></SocialLogin>
             </div>
-          </div>
+          </animated.div>
         </div>
       </div>
+      <ScrollRestoration></ScrollRestoration>
     </div>
   );
 };

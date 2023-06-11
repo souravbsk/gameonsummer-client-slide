@@ -16,7 +16,7 @@ const SocialLogin = ({from}) => {
         .then(result => {
             const user = result.user;
             console.log(user);
-            axios.post("http://localhost:5000/users",{email:user?.email,name: user?.displayName, image: user?.photoURL })
+            axios.post("https://summer-camp-server-one.vercel.app/users",{email:user?.email,name: user?.displayName, image: user?.photoURL })
             .then(res => {
                 navigate(from,{replace:true})
             })

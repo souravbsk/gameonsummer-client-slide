@@ -12,7 +12,7 @@ const PopularClasses = () => {
   const { data: classes, isLoading: isClassLoading } = useQuery(
     ["popularsClasses"],
     async () => {
-      const res = await axios.get("http://localhost:5000/topclasses");
+      const res = await axios.get("https://summer-camp-server-one.vercel.app/topclasses");
       return res.data;
     }
   );

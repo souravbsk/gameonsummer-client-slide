@@ -55,7 +55,7 @@ const AuthProviders = ({ children }) => {
       setUser(currentUser);
       if (currentUser && currentUser.email) {
         axios
-          .post("http://localhost:5000/jwt", { email: currentUser?.email })
+          .post("https://summer-camp-server-one.vercel.app/jwt", { email: currentUser?.email })
           .then((data) => {
             const token = data.data.token;
             localStorage.setItem("gameonsummer-token", token);

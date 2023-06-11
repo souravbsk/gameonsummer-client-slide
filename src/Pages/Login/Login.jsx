@@ -3,14 +3,14 @@ import Lottie from "lottie-react";
 
 import signupAnime from "../../assets/Login/signup.json";
 import { useForm } from "react-hook-form";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, ScrollRestoration, useLocation, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import useAuth from "../../Hooks/useAuth";
 import SocialLogin from "../../Components/SocialLogin/SocialLogin";
 import Swal from "sweetalert2";
 import { ThemeMoodContext } from "../../Providers/ThemeProvider";
 import PageHelmet from "../../Components/PageHelmet/PageHelmet";
-
+import { useSpring,animated } from "@react-spring/web";
 const Login = () => {
   const {Dark} = useContext(ThemeMoodContext)
   const [errorMessage, setErrorMessage] = useState("");
@@ -50,6 +50,15 @@ const Login = () => {
 
   };
 
+
+
+  // spring animation
+  const zoomIn = useSpring({
+    from: { transform: 'scale(0)' },
+    to: { transform: 'scale(1)' },
+  });
+
+
   return (
     <div>
       <PageHelmet>Sign In</PageHelmet>
@@ -64,7 +73,7 @@ const Login = () => {
             />
             ;
           </div>
-          <div className={`card w-full flex-1  shadow-2xl border ${Dark ? "text-white" : "text-slate-800"}`}>
+          <animated.div style={{...zoomIn}} className={`card w-full flex-1  shadow-2xl border ${Dark ? "text-white" : "text-slate-800"}`}>
             <div className="card-body">
               <h1 className="text-3xl text-center mb-3 font-bold">Sign In</h1>
               <form onSubmit={handleSubmit(onSubmit)}>
@@ -129,9 +138,10 @@ const Login = () => {
               <p className="text-center text-red-600">{errorMessage}</p>
               <SocialLogin from={from}></SocialLogin>
             </div>
-          </div>
+          </animated.div>
         </div>
       </div>
+      <ScrollRestoration></ScrollRestoration>
     </div>
   );
 };
