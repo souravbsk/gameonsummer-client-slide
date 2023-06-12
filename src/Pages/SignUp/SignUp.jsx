@@ -214,7 +214,7 @@ const SignUp = () => {
                       <span className="">Gender: </span>
                     </label>
                     <select
-                      className={`select bg-transparent  ${Dark && "border-gray-400 bg-[#1D232A] text-white"} select-bordered max-w-xs w-full`}
+                      className={`select bg-transparent  ${Dark ? "border-gray-400 bg-[#1D232A] text-gray-500" : "bg-white text-slate-900"} select-bordered max-w-xs w-full`}
                       {...register("gender")}
                     >
                       <option value="male">male</option>

@@ -1,15 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 import useAuth from "../../../Hooks/useAuth";
 import { useForm } from "react-hook-form";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import PageHelmet from "../../../Components/PageHelmet/PageHelmet";
+import { ThemeMoodContext } from "../../../Providers/ThemeProvider";
 
 const imgKey = import.meta.env.VITE_IMGBB_KEY;
 const AddAClass = () => {
   const { user } = useAuth();
   const [axiosSecure] = useAxiosSecure();
+  const {Dark} = useContext(ThemeMoodContext)
 
   const {
     register,
@@ -65,13 +67,13 @@ const AddAClass = () => {
       <div>
         <form
         onSubmit={handleSubmit(onSubmit)}
-          className="card border-2xl bg-slate-100 p-3 md:p-10"
+          className="card border-2xl border p-3 md:p-10"
         >
           {/* //first row  */}
           <div className=" flex flex-col md:flex-row items-center justify-between gap-3">
             <div className="form-control w-full">
               <label className="label">
-                <span className="label-text">Class Name*</span>
+                <span className={`label-text ${Dark ? "text-white": "text-gray-600"}`}>Class Name*</span>
               </label>
               <input
                 type="text"
@@ -85,7 +87,7 @@ const AddAClass = () => {
             </div>
             <div className="form-control w-full">
               <label className="label">
-                <span className="label-text">Instructor name*</span>
+                <span className={`label-text ${Dark ? "text-white": "text-gray-600"}`}>Instructor name*</span>
               </label>
               <input
                 type="text"
@@ -104,7 +106,7 @@ const AddAClass = () => {
           <div className=" flex flex-col md:flex-row items-center justify-between gap-3">
             <div className="form-control w-full">
               <label className="label">
-                <span className="label-text">Instructor email*</span>
+                <span className={`label-text ${Dark ? "text-white": "text-gray-600"}`}>Instructor email*</span>
               </label>
               <input
                 readOnly
@@ -122,7 +124,7 @@ const AddAClass = () => {
             </div>
             <div className="form-control w-full">
               <label className="label">
-                <span className="label-text">Price*</span>
+                <span className={`label-text ${Dark ? "text-white": "text-gray-600"}`}>Price*</span>
               </label>
               <input
                 type="number"
@@ -145,7 +147,7 @@ const AddAClass = () => {
           <div className=" flex flex-col md:flex-row items-center justify-between gap-3">
             <div className="form-control w-full">
               <label className="label">
-                <span className="label-text">Available seats*</span>
+                <span className={`label-text ${Dark ? "text-white": "text-gray-600"}`}>Available seats*</span>
               </label>
               <input
                 type="number"
@@ -163,7 +165,7 @@ const AddAClass = () => {
             </div>
             <div className="form-control w-full">
               <label className="label">
-                <span className="label-text">Class Image*</span>
+                <span className={`label-text ${Dark ? "text-white": "text-gray-600"}`}>Class Image*</span>
               </label>
               <input
                 {...register("image", { required: true })}

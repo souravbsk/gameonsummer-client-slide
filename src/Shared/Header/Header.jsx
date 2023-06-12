@@ -1,5 +1,13 @@
 import React, { useContext, useState } from "react";
-import { FaBars, FaChalkboardTeacher, FaHome, FaMoon, FaSignOutAlt, FaSun, FaUser } from "react-icons/fa";
+import {
+  FaBars,
+  FaChalkboardTeacher,
+  FaHome,
+  FaMoon,
+  FaSignOutAlt,
+  FaSun,
+  FaUser,
+} from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
@@ -10,8 +18,8 @@ import useAdmin from "../../Hooks/useAdmin";
 import useInstructor from "../../Hooks/useInstructor";
 import { ThemeMoodContext } from "../../Providers/ThemeProvider";
 import useStudent from "../../Hooks/useStudent";
-import {GiTeacher} from "react-icons/gi";
-import {AiFillDashboard} from "react-icons/ai"
+import { GiTeacher } from "react-icons/gi";
+import { AiFillDashboard } from "react-icons/ai";
 
 const Header = () => {
   const [isShowNav, setShowNav] = useState(false);
@@ -40,90 +48,80 @@ const Header = () => {
       });
   };
 
- 
   const navItems = (
     <>
       <li>
         <NavLink to="/" className="bg-transparent  text-lg ">
-         <FaHome></FaHome> Home
+          <FaHome></FaHome> Home
         </NavLink>
       </li>
       <li>
         <NavLink to="/instructors" className="bg-transparent text-lg  ">
-      <GiTeacher></GiTeacher>   Instructors
+          <GiTeacher></GiTeacher> Instructors
         </NavLink>
       </li>
 
       <li>
-       <NavLink to="/classes" className="bg-transparent text-lg ">
-       <FaChalkboardTeacher></FaChalkboardTeacher>    Classes
+        <NavLink to="/classes" className="bg-transparent text-lg ">
+          <FaChalkboardTeacher></FaChalkboardTeacher> Classes
         </NavLink>
       </li>
       {user ? (
         <>
           <li>
-            <NavLink to="/dashboard" className="bg-transparent text-lg  ">
-            <AiFillDashboard></AiFillDashboard>  Dashboard
+            <NavLink to={isAdmin ? "/dashboard/homeadmin" : isInstructor ? "/dashboard/homeinstructor" : "/dashboard/homestudent"} className="bg-transparent text-lg  ">
+              <AiFillDashboard></AiFillDashboard> Dashboard
             </NavLink>
           </li>
 
-          {  isStudent && (
-              <li>
-                <li className="bg-gray-900 text-white ">
-                  <li className="indicator">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-5"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-                      />
-                    </svg>
-                    <span className="badge font-semibold text-lg badge-md indicator-item">
-                      {carts.length || 0}
-                    </span>
-                  </li>
-                </li>
-              </li>
-            )}
-          <li className="hidden md:block">
-            <div className="dropdown dropdown-end">
-              <label tabIndex={0} className="btn btn-circle avatar">
-                <div className="w-10 rounded-full">
-                  <img src={user?.photoURL} />
-                </div>
-              </label>
-              <ul
-                tabIndex={0}
-                className="menu  top-10 -left-0 md:mt-10 menu-sm dropdown-content p-2 shadow bg-base-300 w-fit rounded-box "
-              >
-                <li>
-                  <button
-                    onClick={handleLogOut}
-                    className={`btn-sm py-2 font-semibold text-sm ${
-                      Dark
-                        ? "bg-slate-800 hover:text-slate-900"
-                        : "bg-[#75d5e3]"
-                    }  flex text-white hover:text-slate-800`}
+          {isStudent && (
+            <li>
+              <div className="bg-gray-900 mb-3 md:mb-0 md:mr-5 text-white ">
+                <div className="indicator">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
                   >
-                   LogOut <FaSignOutAlt></FaSignOutAlt>
-                  </button>
-                </li>
-              </ul>
-            </div>
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+                    />
+                  </svg>
+                  <span className="badge font-semibold text-lg badge-md indicator-item">
+                    {carts.length || 0}
+                  </span>
+                </div>
+              </div>
+            </li>
+          )}
+          <li className="hidden rounded-full overflow-hidden md:block">
+            <label className="btn btn-circle avatar">
+              <div className="w-10 rounded-full">
+                <img src={user?.photoURL} />
+              </div>
+            </label>
+          </li>
+          <li className="md:ml-5">
+            <button
+              onClick={handleLogOut}
+              className={`btn-md mt-0  font-semibold text-sm ${
+                Dark ? "bg-slate-800 hover:text-slate-900" : "bg-[#75d5e3]"
+              }  flex text-white hover:text-gray-400`}
+            >
+           <FaSignOutAlt></FaSignOutAlt>   LogOut 
+            </button>
           </li>
         </>
       ) : (
         <>
-          <li  className="hidden md:block">
+          <li className="hidden md:block">
             <NavLink to="/login" className="bg-transparent text-lg">
-             <FaUser></FaUser> Sign In
+              <FaUser></FaUser> Sign In
             </NavLink>
           </li>
         </>
@@ -172,51 +170,48 @@ const Header = () => {
               </button>
 
               <li>
-
-                {
-                  user ? 
+                {user ? (
                   <div className="dropdown dropdown-end">
-                  <label tabIndex={0} className="btn btn-circle avatar">
-                    <div className="w-10 rounded-full">
-                      <img src={user?.photoURL} />
-                    </div>
-                  </label>
-                  <ul
-                    tabIndex={0}
-                    className="menu  top-16 -left-15 md:mt-10 menu-sm dropdown-content p-2 shadow bg-base-100 rounded-box "
+                    <label tabIndex={0} className="btn btn-circle avatar">
+                      <div className="w-10 rounded-full">
+                        <img src={user?.photoURL} />
+                      </div>
+                    </label>
+                    <ul
+                      tabIndex={0}
+                      className="menu  top-16 -left-15 md:mt-10 menu-sm dropdown-content p-2 shadow bg-base-100 rounded-box "
+                    >
+                      <li>
+                        <button
+                          onClick={handleLogOut}
+                          className={`btn-sm text-lg ${
+                            Dark
+                              ? "bg-slate-800 hover:text-slate-900"
+                              : "bg-[#75d5e3]"
+                          }  flex text-white hover:text-slate-800`}
+                        >
+                          LogOut <FaSignOutAlt></FaSignOutAlt>
+                        </button>
+                      </li>
+                    </ul>
+                  </div>
+                ) : (
+                  <NavLink
+                    to="/login"
+                    className={`bg-transparent  rounded-full btn btn-md font-medium text-sm ${
+                      Dark && "text-white hover:text-black"
+                    }`}
                   >
-                    <li>
-                      <button
-                        onClick={handleLogOut}
-                        className={`btn-sm text-lg ${
-                          Dark
-                            ? "bg-slate-800 hover:text-slate-900"
-                            : "bg-[#75d5e3]"
-                        }  flex text-white hover:text-slate-800`}
-                      >
-                   LogOut     <FaSignOutAlt></FaSignOutAlt>
-                      </button>
-                    </li>
-                  </ul>
-                </div>
-                  : 
-
-
-
-           
-            <NavLink to="/login" className={`bg-transparent  rounded-full btn btn-md font-medium text-sm ${Dark && "text-white hover:text-black" }`}>
-              <FaUser></FaUser>
-            </NavLink>
-       
-                }
-                
+                    <FaUser></FaUser>
+                  </NavLink>
+                )}
               </li>
             </li>
           </ul>
         </div>
         <div className="flex-none">
           <ul
-            className={`menu md:static  py-8 md:py-4 md:w-auto w-1/2 h-screen md:h-auto absolute z-50 top-20  md:items-center duration-300 md:menu-horizontal px-1 ${
+            className={`menu md:static  py-8 md:py-6 md:w-auto w-1/2 h-screen md:h-auto absolute z-50 top-20  md:items-center duration-300 md:menu-horizontal px-1 ${
               Dark
                 ? "text-white bg-[#1D232A] md:bg-transparent "
                 : "text-slate-800 bg-white md:bg-transparent "

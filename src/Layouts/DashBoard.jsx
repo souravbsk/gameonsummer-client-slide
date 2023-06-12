@@ -108,7 +108,7 @@ const DashBoard = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/" className="bg-transparent  md:text-lg ">
+                <NavLink to="/dashboard/adminProfile" className="bg-transparent  md:text-lg ">
                   <FaUser></FaUser> Admin Profile
                 </NavLink>
               </li>
@@ -144,7 +144,7 @@ const DashBoard = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/" className="bg-transparent  md:text-lg ">
+                <NavLink to="/dashboard/instructorProfile" className="bg-transparent  md:text-lg ">
                   <FaUser></FaUser> Instructor Profile
                 </NavLink>
               </li>
@@ -208,8 +208,8 @@ const DashBoard = () => {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/" className="bg-transparent  md:text-lg ">
-                    <FaUser></FaUser> Profile
+                  <NavLink to="/dashboard/StudentProfile" className="bg-transparent  md:text-lg ">
+                    <FaUser></FaUser> My Profile
                   </NavLink>
                 </li>
               </>

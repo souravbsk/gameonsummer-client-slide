@@ -76,7 +76,7 @@ const ClassCard = ({ classItem }) => {
 
 
   return (
-    <div className={`card border-2 bg-base-100 ${Dark ? "text-[#A6ADBA]" : ""} shadow-xl bg-transparent ${!availableSeats && "bg-red-100"}`}>
+    <div className={`card border-2 bg-base-100 ${Dark ? "text-[#A6ADBA]" : "text-[#1D232A]"} shadow-xl  ${!availableSeats ? "bg-red-200" : "bg-transparent"}`}>
       <figure className="">
         <img src={classImage} alt="Shoes" className="rounded-xl rounded-b-none h-64 w-full" />
       </figure>

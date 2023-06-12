@@ -76,7 +76,7 @@ const EnrollClasses = () => {
                   <td className="text-xl font-medium">${item?.price}</td>
                   <th>
                     <button className="btn py-0 text-white  hover:text-slate-800 bg-[#75d5e3] btn-ghost btn-xs">
-                    Paid
+                    Done
                     </button>
                   </th>
                   

@@ -24,6 +24,9 @@ import InstructorsClasses from "../Shared/InstructorsClasses/InstructorsClasses"
 import AdminHome from "../DashBoard/Admins/AdminHome/AdminHome";
 import StudentHome from "../DashBoard/Students/StudentHome/StudentHome";
 import InstructorHome from "../DashBoard/Instructor/InstructorHome/InstructorHome";
+import StudentProfile from "../DashBoard/Students/StudentProfile/StudentProfile";
+import InstructorProfile from "../DashBoard/Instructor/InstructorProfile/InstructorProfile";
+import AdminProfile from "../DashBoard/Admins/AdminProfile/AdminProfile";
 
 const router = createBrowserRouter([
   {
@@ -84,6 +87,11 @@ const router = createBrowserRouter([
         path:"/dashboard/paymenthistory",
         element:<StudentRoute><PaymentHistory></PaymentHistory></StudentRoute>
       },
+      {
+        path:"/dashboard/StudentProfile",
+        element:<StudentRoute><StudentProfile></StudentProfile></StudentRoute>,
+       
+      },
       // ________ admin route___________
 
       {
@@ -103,6 +111,10 @@ const router = createBrowserRouter([
         path:"/dashboard/manageclasses/:id",
         element:<AdminRoute><ReviewClasses></ReviewClasses></AdminRoute>
       },
+      {
+        path:"/dashboard/adminProfile",
+        element:<AdminRoute><AdminProfile></AdminProfile></AdminRoute>
+      },
       //_____________Instructor__________
       {
         path:"/dashboard/homeinstructor",
@@ -114,6 +126,10 @@ const router = createBrowserRouter([
       },{
         path:"/dashboard/myClassList",
         element:<InstructorRoute><InstructorClassesList></InstructorClassesList></InstructorRoute>
+      },
+      {
+        path:"/dashboard/instructorProfile",
+        element:<InstructorRoute><InstructorProfile></InstructorProfile></InstructorRoute>
       }
     ]
   },
