@@ -48,6 +48,12 @@ const Header = () => {
       });
   };
 
+
+  const handleDarkMood = () => {
+    setDark(!Dark)
+  }
+
+
   const navItems = (
     <>
       <li>
@@ -119,7 +125,7 @@ const Header = () => {
         </>
       ) : (
         <>
-          <li className="hidden md:block">
+          <li className="hidden lg:block">
             <NavLink to="/login" className="bg-transparent text-lg">
               <FaUser></FaUser> Sign In
             </NavLink>
@@ -137,9 +143,9 @@ const Header = () => {
         Dark ? "bg-[#1D232A]" : "bg-white "
       }`}
     >
-      <div className="navbar bg-none  md:py-0 py-5 items-start md:items-center flex-col md:flex-row container ">
+      <div className="navbar bg-none  lg:py-0 py-5 items-start lg:items-center flex-col lg:flex-row container ">
         <div className="flex-1 flex justify-between items-center w-full">
-          <div className="md:hidden block">
+          <div className="lg:hidden block">
             <button
               onClick={() => setShowNav(!isShowNav)}
               className="text-2xl bg-[#75D5E3]"
@@ -156,7 +162,7 @@ const Header = () => {
             <SiGamejolt className="md:text-5xl"></SiGamejolt>
             GameOnSummer
           </Link>
-          <ul className="md:hidden block">
+          <ul className="lg:hidden block">
             <li>
               <button
                 className={` fixed top-40  right-5 shadow-2xl p-3 mt-0 ml-5 rounded-full ${
@@ -164,7 +170,7 @@ const Header = () => {
                     ? "text-slate-800 bg-yellow-50"
                     : " bg-slate-800 text-yellow-50"
                 }`}
-                onClick={() => setDark(!Dark)}
+                onClick={handleDarkMood}
               >
                 {Dark ? <FaSun></FaSun> : <FaMoon></FaMoon>}
               </button>
@@ -211,16 +217,16 @@ const Header = () => {
         </div>
         <div className="flex-none">
           <ul
-            className={`menu md:static  py-8 md:py-6 md:w-auto w-1/2 h-screen md:h-auto absolute z-50 top-20  md:items-center duration-300 md:menu-horizontal px-1 ${
+            className={`menu lg:static  py-8 md:py-6 lg:w-auto w-1/2 h-screen lg:h-auto absolute z-50 top-20  lg:items-center duration-300 lg:menu-horizontal px-1 ${
               Dark
-                ? "text-white bg-[#1D232A] md:bg-transparent "
-                : "text-slate-800 bg-white md:bg-transparent "
-            }    ${isShowNav ? "left-0" : "-left-96"}`}
+                ? "text-white bg-[#1D232A] lg:bg-transparent "
+                : "text-slate-800 bg-white lg:bg-transparent "
+            }    ${isShowNav ? "left-0" : "-left-[500px]"}`}
           >
             {navItems}
           </ul>
         </div>
-        <ul className="hidden md:block">
+        <ul className="hidden lg:block">
           <li>
             <button
               className={`p-2    mt-0 ml-3 rounded-full ${
@@ -228,7 +234,7 @@ const Header = () => {
                   ? "text-slate-800 bg-yellow-100"
                   : " bg-slate-800 text-yellow-100"
               }`}
-              onClick={() => setDark(!Dark)}
+              onClick={handleDarkMood}
             >
               {Dark ? <FaSun></FaSun> : <FaMoon></FaMoon>}
             </button>

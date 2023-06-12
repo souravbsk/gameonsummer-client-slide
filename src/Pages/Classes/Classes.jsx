@@ -21,7 +21,7 @@ const Classes = () => {
       <SectionTitle title="All Classes"></SectionTitle>
       </div>
 
-      <animated.div style={{reverse:true,...springs}} className="grid grid-cols-1 md:grid-cols-3 gap-8">{
+      <animated.div style={{reverse:true,...springs}} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">{
       allClasses.map(classItem => <ClassCard key={classItem._id} classItem={classItem}></ClassCard>)
       }</animated.div>
       <ScrollRestoration></ScrollRestoration>

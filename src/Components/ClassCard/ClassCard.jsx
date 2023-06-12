@@ -86,7 +86,7 @@ const ClassCard = ({ classItem }) => {
         <p>Available Seats: {availableSeats}</p>
         <p>Instructor Name: {instructorName}</p>
 
-        <div className=" border-t-2 pt-3 flex items-center w-full">
+        <div className=" shrink-0 border-t-2 pt-3 flex items-center w-full">
           <button disabled={!availableSeats || isInstructor || isAdmin} onClick={handleAddCart} className={`btn text-white hover:text-slate-900 bg-[#75d5e3]`}>Enroll Now</button>
           <p className="text-right text-2xl font-bold ">${price}</p>
         </div>

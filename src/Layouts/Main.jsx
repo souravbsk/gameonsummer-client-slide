@@ -14,7 +14,7 @@ const Main = () => {
 
 
   return (
-    <div>
+    <div className="overflow-hidden">
       <Header></Header>
       <main className={`${Dark ? "bg-[#1D232A]" : "bg-[#75d5e30d] "}`}>
         {navigation.state === "loading" ? (
