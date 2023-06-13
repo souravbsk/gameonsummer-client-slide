@@ -48,11 +48,9 @@ const Header = () => {
       });
   };
 
-
   const handleDarkMood = () => {
-    setDark(!Dark)
-  }
-
+    setDark(!Dark);
+  };
 
   const navItems = (
     <>
@@ -75,7 +73,16 @@ const Header = () => {
       {user ? (
         <>
           <li>
-            <NavLink to={isAdmin ? "/dashboard/homeadmin" : isInstructor ? "/dashboard/homeinstructor" : "/dashboard/homestudent"} className="bg-transparent text-lg  ">
+            <NavLink
+              to={
+                isAdmin
+                  ? "/dashboard/homeadmin"
+                  : isInstructor
+                  ? "/dashboard/homeinstructor"
+                  : "/dashboard/homestudent"
+              }
+              className="bg-transparent text-lg  "
+            >
               <AiFillDashboard></AiFillDashboard> Dashboard
             </NavLink>
           </li>
@@ -105,22 +112,31 @@ const Header = () => {
               </div>
             </li>
           )}
-          <li className="hidden rounded-full overflow-hidden md:block">
-            <label className="btn btn-circle avatar">
-              <div className="w-10 rounded-full">
-                <img src={user?.photoURL} />
-              </div>
-            </label>
-          </li>
-          <li className="md:ml-5">
-            <button
-              onClick={handleLogOut}
-              className={`btn-md mt-0  font-semibold text-sm ${
-                Dark ? "bg-slate-800 hover:text-slate-900" : "bg-[#75d5e3]"
-              }  flex text-white hover:text-gray-400`}
-            >
-           <FaSignOutAlt></FaSignOutAlt>   LogOut 
-            </button>
+          <li className="hidden rounded-full  md:block">
+            <div className="dropdown dropdown-end">
+              <label tabIndex={0} className="btn btn-circle avatar">
+                <div className="w-10 rounded-full">
+                  <img src={user?.photoURL} />
+                </div>
+              </label>
+              <ul
+                tabIndex={0}
+                className="menu menu-sm top-14  dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-fit"
+              >
+                <li className="">
+                  <button
+                    onClick={handleLogOut}
+                    className={`btn-md mt-0  font-semibold text-sm ${
+                      Dark
+                        ? "bg-slate-800 hover:text-slate-900"
+                        : "bg-[#75d5e3]"
+                    }  flex text-white hover:text-slate-700`}
+                  >
+                    <FaSignOutAlt></FaSignOutAlt> LogOut
+                  </button>
+                </li>
+              </ul>
+            </div>
           </li>
         </>
       ) : (

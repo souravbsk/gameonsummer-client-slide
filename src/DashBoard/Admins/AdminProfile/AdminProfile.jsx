@@ -74,7 +74,7 @@ const AdminProfile = () => {
         <div>
           <div className="max-w-full relative mx-auto md:w-1/2 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <div className="flex justify-end px-4 py-6"></div>
-            <div className="flex px-10 gap-6 items-center pb-10">
+            <div className="flex flex-col md:flex-row px-10 gap-6 items-center pb-10">
               <img
                 className="w-32 h-32 mb-3 rounded-full shadow-lg"
                 src={userData?.image}
