@@ -32,3 +32,17 @@
     font-weight: 900;
 
 }
+
+
+.lg-react-element {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 26px;
+}
+
+@media only screen and (max-width: 525px){
+	.lg-react-element {
+        grid-template-columns: repeat(1,1fr) ;
+        gap: 26px; 
+    }
+}

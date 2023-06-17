@@ -6,16 +6,16 @@ import axios from "axios";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-// import required modules
 import { Pagination,Navigation, Autoplay } from "swiper";
 import { Link } from "react-router-dom";
 import { useSpring,animated } from "@react-spring/web";
 import { ThemeMoodContext } from "../../../Providers/ThemeProvider";
 
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+// import required modules
 
 const PopulaInstructor = () => {
 
